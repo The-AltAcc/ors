@@ -939,6 +939,7 @@ DisablePDTHChallengeStandalone = DisablePDTHChallengeStandalone or {}
 Hooks:Register("restoration_on_synced_peer")
 Hooks:Add("restoration_on_synced_peer","restoration_do_sync_peer_stuff",function(peer,peer_id)
 	restoration:send_sync_environment(peer,peer_id)
+	restoration:akiko_send_sync_unique_units(peer,peer_id)
 end)
 
 function restoration:get_env_setting(name)
