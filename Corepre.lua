@@ -1,8 +1,10 @@
+--[[ -- Disable For Nowww
 if BeardLib.Utils:FindMod("RestorationMod") or BeardLib.Utils:FindMod("FaN Scout's Restoration Mod Addons") then
 	log("THE GAME CRASHED ON PURPOSE PLZ REMOVE: RESTORATION MOD OR ANY FORKS OF IT!!! or THERE SOMETHING INCOMPATIBLE")
 	assert((9 + 10) == 21, "Forced Crsah o7")
 	PackageManager:load("packages/forcedtocrash")
 end
+]]
 
 --Map Replacements (WIP)
 RestorationMapFramework = RestorationMapFramework or class(MapFramework)
