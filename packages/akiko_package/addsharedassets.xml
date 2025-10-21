@@ -1,0 +1,213 @@
+<table directory="assets">		
+	<!--NPC SPAS 12-->
+	<cooked_physics		path="units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<material_config	path="units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<model				path="units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<object				path="units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false"/>
+	<unit				path="units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12" force="false" load="false"/>
+	<df_nm			path="units/pd2_mod_akiko/weapons/wpn_npc_spas12/spas12" force="false"/>
+	
+	<!--NPC KelTec KSG-->
+	<cooked_physics		path="units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<material_config	path="units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<model				path="units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<object				path="units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false"/>
+	<unit				path="units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg" force="false" load="false"/>
+	<df_nm			path="units/pd2_mod_akiko/weapons/wpn_npc_ksg/ksg" force="false"/>
+	
+	<!--NPC Nothing Rifle Hold Anim (Sniper too)-->
+	<cooked_physics		path="units/pd2_mod_akiko/weapons/wpn_nothing/wpn_nothing" force="false"/>
+	<model				path="units/pd2_mod_akiko/weapons/wpn_nothing/wpn_nothing" force="false"/>
+	<object				path="units/pd2_mod_akiko/weapons/wpn_nothing/wpn_nothing" force="false"/>
+	<unit				path="units/pd2_mod_akiko/weapons/wpn_nothing/wpn_nothing" force="false" load="false"/>
+	
+	<!--NPC Port Railgun-->
+	<cooked_physics		path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false"/>
+	<material_config	path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false"/>
+	<model				path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false"/>
+	<object				path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false"/>
+	<sequence_manager	path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false"/>
+	<unit				path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false" load="false"/>
+	<df_nm			path="units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun" force="false"/>
+	
+	<!--NPC Groundsniper M14-->
+	<unit				path="units/pd2_mod_akiko/weapons/wpn_npc_sniper_sc/wpn_npc_sniper_sc" force="false" load="false"/>
+	
+	<!--Gign Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_gign_doc_helmet/ene_acc_gign_doc_helmet" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_gign_doc_helmet/ene_acc_gign_doc_helmet" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_gign_doc_helmet/ene_acc_gign_doc_helmet" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_gign_doc_helmet/ene_acc_gign_doc_helmet" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_gign_doc_helmet/ene_acc_gign_doc_helmet" force="false"/>
+	
+	<!--National Guard Medic Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_1/ene_acc_ng_medic_helmet_1" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_1/ene_acc_ng_medic_helmet_1" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_1/ene_acc_ng_medic_helmet_1" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_1/ene_acc_ng_medic_helmet_1" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_1/ene_acc_ng_medic_helmet_1" force="false"/>
+	
+	<!--National Guard Shotgun Medic Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_2/ene_acc_ng_medic_helmet_2" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_2/ene_acc_ng_medic_helmet_2" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_2/ene_acc_ng_medic_helmet_2" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_2/ene_acc_ng_medic_helmet_2" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_medic_helmet_2/ene_acc_ng_medic_helmet_2" force="false"/>
+	
+	<!--XOF Shield (not person)-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_xof_shield/ene_acc_xof_shield" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_xof_shield/ene_acc_xof_shield" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_xof_shield/ene_acc_xof_shield" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_xof_shield/ene_acc_xof_shield" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_acc_xof_shield/ene_acc_xof_shield" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_xof_shield/ene_acc_xof_shield" force="false"/>
+	<!--XOF Cowboy Hat-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_xof_cowhat/ene_acc_xof_cowhat" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_xof_cowhat/ene_acc_xof_cowhat" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_xof_cowhat/ene_acc_xof_cowhat" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_xof_cowhat/ene_acc_xof_cowhat" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_xof_cowhat/ene_acc_xof_cowhat" force="false"/>
+	
+	<!--Zeal Light Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_helmet/ene_acc_zeal_swat_helmet" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat/ene_zeal_swat_head_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat/ene_zeal_swat_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat/ene_zeal_swat_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat/ene_zeal_swat_head_df" force="false"/>
+	
+	<!--Zeal Heavy Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_zeal_swat_heavy_helmet/ene_acc_zeal_swat_heavy_helmet" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat_heavy/swat_heavy_head_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat_heavy/swat_heavy_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat_heavy/swat_heavy_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_swat_heavy/swat_heavy_head_df" force="false"/>
+	
+	<!--Zeal Light Camo Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_helmet/ene_acc_zeal_camo_helmet" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_helmet/ene_acc_zeal_camo_helmet" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_helmet/ene_acc_zeal_camo_helmet" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_helmet/ene_acc_zeal_camo_helmet" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_helmet/ene_acc_zeal_camo_helmet" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo/ene_zeal_camo_head_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo/ene_zeal_camo_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo/ene_zeal_camo_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo/ene_zeal_camo_head_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_helmet/ene_zeal_camo_head_df" force="false"/>
+	
+	<!--Zeal Heavy Camo Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_heavy_helmet/ene_acc_zeal_camo_heavy_helmet" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_heavy_helmet/ene_acc_zeal_camo_heavy_helmet" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_heavy_helmet/ene_acc_zeal_camo_heavy_helmet" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_heavy_helmet/ene_acc_zeal_camo_heavy_helmet" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_heavy_helmet/ene_acc_zeal_camo_heavy_helmet" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo_heavy/swat_heavy_head_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo_heavy/swat_heavy_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo_heavy/swat_heavy_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_zeal_camo_heavy/swat_heavy_head_df" force="false"/>
+	
+	<!--Zeal Shield (not person)-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/ene_acc_zeal_shield" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/ene_acc_zeal_shield" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/ene_acc_zeal_shield" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/ene_acc_zeal_shield" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/ene_acc_zeal_shield" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/ene_acc_zeal_shield" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/shield_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/shield_il" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_shield/shield_nm" force="false"/>
+	
+	<!--Zeal Camo Shield (not person)-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/ene_acc_zeal_camo_shield" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/ene_acc_zeal_camo_shield" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/ene_acc_zeal_camo_shield" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/ene_acc_zeal_camo_shield" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/ene_acc_zeal_camo_shield" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/ene_acc_zeal_camo_shield" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/shield_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/shield_il" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_acc_zeal_camo_shield/shield_nm" force="false"/>
+	
+	<!--Shared Textures-->
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/bulldozer_irs_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/atf_body_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/atf_body_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/cia_suite_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/vip_2_body_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ene_gign_doc_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ene_gign_doc_glass_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ene_gign_doc_head_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ene_gign_doc_head_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ene_gign_doc_nm" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/gign_glass_clear_small_dark_fade_op" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_shield" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/yeehaw" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_light" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/ntl_hat" force="false"/>
+	<!--Very Important Shared Textures For National Guard (Remove this note after finishing porting :3)-->
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/ene_national_guard_dozer_head" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/helmet_ng" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/helmet_ng_op" force="false"/>
+	<!--End of Important Shared Textures (Remove this note after finishing porting :3)-->
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/ng_bulldozer" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_bulldozer_2_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_bulldozer_3_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/national_guard_face_2_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/national_guard_3_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/ene_bulldozer_taser/ene_bulldozer_taser_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/irs_medictaser_body_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/irs_medictaser_helmets_df" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/material_body" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/material_head" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/material_head_il" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/shotgun/material_body_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/shotgun/material_head_df" force="false"/>
+	<!--Shared Textures for NG-->
+	<df_nm path="units/pd2_dlc_gitgud/characters/ene_acc_shield_new_swat_sc/shield" force="false"/>
+	<df_nm path="units/pd2_dlc_gitgud/characters/ene_zeal_tazer_sc/ene_zeal_tazer" force="false"/>
+	<df_nm path="units/pd2_dlc_gitgud/characters/shared_textures/ng_heavy/ng_heavy" force="false"/>
+	<df_nm path="units/pd2_dlc_gitgud/characters/shared_textures/ng_heavy/ng_heavy_head" force="false"/>
+	
+	<!--Textures for Xof Vol-->
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/arm" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/body" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/eyepatch" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/gasmask" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/horn" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/knife" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/logo_df" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/logo_op" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/recorder" force="false"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/robot" force="false"/>
+	
+	<!--Textures for Xof Heavy-->
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_heavy/body" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_heavy/extra" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_heavy/helmet" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_heavy/tank" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_heavy/glass" force="false"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/xof_heavy/glass_op" force="false"/>
+	
+	<!--Textures for Xof Specialist-->
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/dumb_donnie"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/yeah_im_a_loser_df"/>
+	<texture path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/yeah_im_a_loser_il"/>
+	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/body"/>
+	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/head"/>
+	
+	<!--M416 (Fix Bug)-->
+	<cooked_physics path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
+	<material_config path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
+	<model path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
+	<object path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
+	<unit path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false" load="false"/>
+	<df_nm path="units/pd2_mod_lapd/weapons/wpn_npc_m416/m416_atlas" force="false"/>
+	
+</table>

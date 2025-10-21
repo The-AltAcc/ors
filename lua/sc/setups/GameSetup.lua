@@ -1,3 +1,4 @@
+--dofile(ModPath .. "core.lua")
 function GameSetup:load_packages()
 	Setup.load_packages(self)
 
@@ -58,7 +59,40 @@ function GameSetup:load_packages()
 			PackageManager:load(package_name)
 		end
     end
-
+	local function isthisaskimerish()
+		local laskirmish_heists = {
+		"skmc_mad",
+		"skm_red2",
+		"skm_mus",
+		"skm_arena",
+		"skmc_ovengrill",
+		"skm_watchdogs_stage2",
+		"skm_firestarter_2",
+		"skm_nightmare_lvl",
+		"skm_big2",
+		"skm_mallcrasher",
+		"skm_cas",
+		"skm_bex",
+		"skm_friend",
+		"skm_street"
+		}
+		if Global.level_data and Global.level_data.level_id then
+			local level_id = Global.level_data.level_id
+			if table.contains(laskirmish_heists, level_id) then
+				log("[isthisaskimerish] Current heist (" .. level_id .. ") is a Skirmish heist.")
+				return true
+			else
+				log("[isthisaskimerish] Current heist (" .. level_id .. ") is NOT a Skirmish heist or is not tracked.")
+				return false
+			end
+		end
+		log("[isthisaskimerish] Warning: This is not available")
+		return false
+    end
+	restoration:thinkf_refresh_current_throughput() -- thinkfaser setting :3
+	--Starts first loads shared textures and assets (akiko edit)
+	load_difficulty_package("packages/addsharedassets")
+	
     local a = tweak_data.levels.ai_groups.america
     local r = tweak_data.levels.ai_groups.russia
     local m = tweak_data.levels.ai_groups.murkywater
@@ -93,9 +127,11 @@ function GameSetup:load_packages()
 		local diff_package = "packages/" .. (Global.game_settings and Global.game_settings.difficulty .. "_sc_russia" or "normal")
 
         load_difficulty_package(diff_package) 
+		PackageManager:load("packages/lvl_mad")
 
     elseif ai_type == m then
 		local diff_package = "packages/" .. (Global.game_settings and Global.game_settings.difficulty .. "_sc_murkywater" or "normal")
+		PackageManager:load("packages/dlcs/bph/job_bph")
 
         load_difficulty_package(diff_package)
     elseif ai_type == f then
@@ -122,6 +158,54 @@ function GameSetup:load_packages()
 
 		load_difficulty_package(diff_package)
     end
+	
+	--Akiko Edits
+	--Note to self:
+		--<Package id="packages/akiko_misc" file="packages/akiko_package/addmisc.xml"/>
+		--USE PACKAGE ID AND NOT FILE LOCATION OR ASSETS ARE NEVER LOADED!!!
+	local amiaskimiersh = isthisaskimerish()
+	load_difficulty_package("packages/addwarthog")
+	load_difficulty_package("packages/addgroundsniperfbi")
+	load_difficulty_package("packages/addgroundsniperswat")
+	load_difficulty_package("packages/addatfagent")
+	load_difficulty_package("packages/addciaagent")
+	load_difficulty_package("packages/addtazerdozer")
+	load_difficulty_package("packages/addzealtazerdozer")
+	if (difficulty_index == 6 or difficulty_index == 7 or difficulty_index == 8 or amiaskimiersh) then
+		load_difficulty_package("packages/addgigndoc")
+	end
+	if (difficulty_index == 7 or amiaskimiersh) then
+		load_difficulty_package("packages/addgroundsnipergensec")
+	end
+	if (difficulty_index == 7 or difficulty_index == 8 or amiaskimiersh) then
+		--load_difficulty_package("packages/addngminigun")
+		load_difficulty_package("packages/addxofunit")
+		load_difficulty_package("packages/addtitanshielddozer")
+	end
+	if (difficulty_index == 8 or amiaskimiersh) and (ai_type == a or ai_type == feds or ai_type == la or ai_type == ny) then
+		load_difficulty_package("packages/addnationalguards")
+		load_difficulty_package("packages/addusngwarthog")
+		load_difficulty_package("packages/addgroundsniperng")
+		load_difficulty_package("packages/addirsunits")
+	end
+	
+	restoration:akiko_load_unique_dynamic_units(true)
+	
+	--[[
+	if difficulty_index == 4 then
+		load_difficulty_package("packages/akiko_package/REPLACEME")
+	elseif difficulty_index == 5 then
+		load_difficulty_package("packages/akiko_package/REPLACEME")
+	elseif difficulty_index == 6 then
+		load_difficulty_package("packages/akiko_package/REPLACEME")
+	elseif difficulty_index == 7 then
+		load_difficulty_package("packages/akiko_package/REPLACEME")
+	elseif difficulty_index == 8 then
+		load_difficulty_package("packages/akiko_package/REPLACEME")
+	end
+	]]
+	
+	--End of Akiko Edits
     
     self._loaded_faction_packages = {}
 
@@ -350,4 +434,14 @@ function GameSetup:gather_packages_to_unload()
 
 		self._mutators_packages = {}
 	end
+	--Akiko Unload Dynamic Packages
+	if restoration.loaded_akiko_dynamic_packages then
+		for i, package in ipairs(restoration.loaded_akiko_dynamic_packages) do
+			if PackageManager:loaded(package) then
+				table.insert(self._packages_to_unload, package)
+			end
+		end
+
+		restoration.loaded_akiko_dynamic_packages = {}
+    end
 end
