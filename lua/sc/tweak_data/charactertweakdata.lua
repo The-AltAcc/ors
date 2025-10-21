@@ -58,6 +58,24 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_omnia_lpf(presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
+	
+	--Akiko Extras Charactertweaks (if attempt to index field '_char_tweak' then u forgot to put function here)
+	self:_init_xof_swat(presets)
+	self:_init_xof_markman(presets)
+	self:_init_xof_heavy_swat(presets)
+	self:_init_xof_shield(presets)
+	self:_init_xof_pigglet(presets)
+	self:_init_xof_volunteer(presets)
+	self:_init_xof_spooc(presets)
+	self:_init_gign_doc(presets)
+	self:_init_irs_mpv(presets)
+	self:_init_us_warthog(presets)
+	self:_init_tank_taser(presets)
+	self:_init_shield_dozers(presets)
+	self:_init_zombie_test(presets)
+	self:_init_ng_medic(presets)
+	
+	--Rest of Res Stuff
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -16434,6 +16452,38 @@ function CharacterTweakData:_presets(tweak_data)
 			}
 		}			
 	}
+	
+	--Akiko Groundsniper Setup
+	restoration.log_shit("SC: akiko groundsniper presets")
+	presets.weapon.normal.is_groundsniper = deep_clone(presets.weapon.normal.is_sniper)
+	presets.weapon.good.is_groundsniper = deep_clone(presets.weapon.good.is_sniper)
+	presets.weapon.expert.is_groundsniper = deep_clone(presets.weapon.expert.is_sniper)
+	presets.weapon.deathwish.is_groundsniper = deep_clone(presets.weapon.deathwish.is_sniper)
+	presets.weapon.gang_member.is_groundsniper = deep_clone(presets.weapon.gang_member.is_sniper)
+	
+	presets.weapon.normal.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.normal.is_groundsniper.focus_delay = 5
+	presets.weapon.good.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.good.is_groundsniper.focus_delay = 5
+	presets.weapon.expert.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.expert.is_groundsniper.focus_delay = 5
+	presets.weapon.deathwish.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.deathwish.is_groundsniper.focus_delay = 5
+	--presets.weapon.normal.is_groundsniper.focus_delay = 10
+	--presets.weapon.normal.is_groundsniper.focus_dis = 200
+	
+	presets.weapon.normal.is_groundsniper_no_laser = deep_clone(presets.weapon.normal.is_groundsniper)
+	presets.weapon.good.is_groundsniper_no_laser = deep_clone(presets.weapon.good.is_groundsniper)
+	presets.weapon.expert.is_groundsniper_no_laser = deep_clone(presets.weapon.expert.is_groundsniper)
+	presets.weapon.deathwish.is_groundsniper_no_laser = deep_clone(presets.weapon.deathwish.is_groundsniper)
+	presets.weapon.gang_member.is_groundsniper_no_laser = deep_clone(presets.weapon.gang_member.is_groundsniper)
+	
+	presets.weapon.normal.is_groundsniper_no_laser.use_laser = false
+	presets.weapon.good.is_groundsniper_no_laser.use_laser = false
+	presets.weapon.expert.is_groundsniper_no_laser.use_laser = false
+	presets.weapon.deathwish.is_groundsniper_no_laser.use_laser = false
+	--Akiko Groundsniper Done
+	
 	restoration.log_shit("SC: normal presets")
 	presets.weapon.normal.akimbo_pistol = deep_clone(presets.weapon.normal.is_pistol)
 	presets.weapon.normal.rifle = deep_clone(presets.weapon.normal.is_rifle)
@@ -18311,8 +18361,28 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	
 	--Akimbo Peacemaker
 	table.insert(self.weap_ids, "x_peacemaker")
-	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))	
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))
+	
+	--Nothing (Sniper/Rifles)
+	table.insert(self.weap_ids, "nothin_rifles")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_nothing/wpn_nothing"))
+	
+	--Port Railgun
+	table.insert(self.weap_ids, "port_railgun_npc")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun"))
+	
+	--Ground Sniper M14
+	table.insert(self.weap_ids, "groundsniper_m14")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_sniper_sc/wpn_npc_sniper_sc"))
+	
+	--SPAS 12
+	table.insert(self.weap_ids, "spas12")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12"))
 
+	--KelTec KSG
+	table.insert(self.weap_ids, "ksg")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg"))
+	
 end)
 
 function CharacterTweakData:_set_easy()
@@ -19703,6 +19773,49 @@ function CharacterTweakData:character_map()
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser"
+			}
+		}
+		char_map.akiko = {
+			path = "units/pd2_mod_akiko/characters/",
+			list = {
+				"ene_zeal_swat",
+				"ene_zeal_swat_heavy",
+				"ene_zeal_swat_shield",
+				"ene_zeal_camo",
+				"ene_zeal_camo_heavy",
+				"ene_zeal_camo_shield",
+				"ene_titan_shield_bulldozer",
+				"ene_zeal_warthog",
+				"ene_norm_warthog",
+				"ene_xof_piglet",
+				"ene_groundsniper_fbi",
+				"ene_groundsniper_swat",
+				"ene_groundsniper_gensec",
+				"ene_xof_heavy",
+				"ene_xof_heavy_sniper",
+				"ene_xof_light",
+				"ene_xof_shield",
+				"ene_xof_specialist",
+				"ene_gign_doc",
+				"ene_xof_volunteer",
+				"ene_groundsniper_ng",
+				"ene_atf_agent",
+				"ene_cia_agent",
+				"ene_cia_zeal_light",
+				"ene_irs_bulldozer_skull",
+				"ene_irs_mpu",
+				"ene_bulldozer_taser",
+				"ene_zeal_bulldozer_taser",
+				"ene_ng_minigunner",
+				"ene_ng_medic_1",
+				"ene_ng_medic_2",
+				"ene_ng_cloaker",
+				"ene_ng_heavy_sniper",
+				"ene_ng_bulldozer_medic",
+				"ene_ng_bulldozer_minigun",
+				"ene_ng_bulldozer",
+				"ene_ng_bulldozer_2",
+				"ene_ng_bulldozer_3"
 			}
 		}
 
