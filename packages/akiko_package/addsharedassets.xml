@@ -169,11 +169,6 @@
 	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/material_head_il" force="false"/>
 	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/shotgun/material_body_df" force="false"/>
 	<texture path="units/pd2_mod_akiko/characters/shared_textures/ng_medic/shotgun/material_head_df" force="false"/>
-	<!--Shared Textures for NG-->
-	<df_nm path="units/pd2_dlc_gitgud/characters/ene_acc_shield_new_swat_sc/shield" force="false"/>
-	<df_nm path="units/pd2_dlc_gitgud/characters/ene_zeal_tazer_sc/ene_zeal_tazer" force="false"/>
-	<df_nm path="units/pd2_dlc_gitgud/characters/shared_textures/ng_heavy/ng_heavy" force="false"/>
-	<df_nm path="units/pd2_dlc_gitgud/characters/shared_textures/ng_heavy/ng_heavy_head" force="false"/>
 	
 	<!--Textures for Xof Vol-->
 	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_volunteer/arm" force="false"/>
@@ -201,13 +196,5 @@
 	<texture path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/yeah_im_a_loser_il"/>
 	<df_nm_gsma path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/body"/>
 	<df_nm path="units/pd2_mod_akiko/characters/shared_textures/xof_specialist/head"/>
-	
-	<!--M416 (Fix Bug)-->
-	<cooked_physics path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
-	<material_config path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
-	<model path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
-	<object path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false"/>
-	<unit path="units/pd2_mod_lapd/weapons/wpn_npc_m416/wpn_npc_m416" force="false" load="false"/>
-	<df_nm path="units/pd2_mod_lapd/weapons/wpn_npc_m416/m416_atlas" force="false"/>
 	
 </table>
