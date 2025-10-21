@@ -89,7 +89,7 @@ function GameSetup:load_packages()
 		log("[isthisaskimerish] Warning: This is not available")
 		return false
     end
-	restoration:thinkf_refresh_current_throughput() -- thinkfaser setting :3
+	--restoration:thinkf_refresh_current_throughput() -- thinkfaser setting :3  --disable for now
 	--Starts first loads shared textures and assets (akiko edit)
 	load_difficulty_package("packages/addsharedassets")
 	
