@@ -5953,8 +5953,549 @@ function UpgradesTweakData:_player_definitions()
 			category = "player"
 		}
 	}
+	
+	--Akiko Armor Plate Perk Deck (og. Hacker_lyx) - Defined Upgradetweak Value
+	self.values.temporary.adaptive_plate_base = {
+		{
+			6,
+			2.0
+		}
+	}
+	
+	self.values.temporary.adaptive_plate_stage_0 = {
+		{
+			2,
+			2
+		}
+	}
+	
+	self.values.temporary.adaptive_plate_stage_1 = {
+		{
+			1,
+			2
+		}
+	}
+	self.values.temporary.adaptive_plate_stage_2 = {
+		{
+			1,
+			2
+		}
+	}
+	self.values.temporary.adaptive_plate_stage_3 = {
+		{
+			1,
+			2
+		}
+	}
+	self.values.temporary.adaptive_plate_stage_4 = {
+		{
+			1,
+			2
+		}
+	}
+	
+	self.values.player.adaptive_plate_multiplier = {
+		60,
+		120,
+		240
+	}
+	self.values.player.titan_bd_armor_multiplier = {
+		3.0,
+		3.0
+	}
+	self.values.player.invul_adaptive_plate_varient = {
+		1,
+		1
+	}
+	self.values.temporary.invul_adaptive_plate_timer = {
+		{
+			2,
+			2
+		}
+	}
+	self.values.player.armor_plate_bag_amount = {
+		1,
+		2,
+		3,
+		4,
+		5,
+		6
+	}
+	--Double Click Mechanic
+	self.values.temporary.akiko_apbag_doubleclick = {{0, 1}} -- first value does nothing
+	self.definitions.temporary_akiko_apbag_doubleclick = {
+		name_id = "menu_akiko_apbag_doubleclick",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "akiko_apbag_doubleclick",
+			category = "temporary"
+		}
+	}
+	
+	--Basic Armor Plate Carrier and its Plates--
+	self.values.player.akiko_ma_default_plate = {{ -- ik it saids only default_plate but it both of them
+		{	-- Basic Armor Plate Carrier
+			deflection = 0.05, -- deflection - [5 deflection (100*0.05)]
+			damage_shake = 1, -- flinch - [-5 flinch (100*(-0.05))]
+			skill_ammo_mul = 0.85, -- ammo pickup rate - [85% ammo pickup rate (100*0.85)]
+			stamina = 0.75, -- stamina - idk how to define this
+			--Rests of stats default to 0.. or should that is
+		},
+		{	-- Basic Armor Plates
+			armor = 2, -- armor per plate - [20 armor (10*2)]
+			damage_shake = -0.05, -- flinch per plate - [-5 flinch (100*(-0.05))]
+			trama_damage = 1, -- trama damage - [1% per 10 damage (10*1)]
+		}
+	}}
+	self.definitions.akiko_ma_default_plate = {
+		name_id = "akiko_ma_default_plate", --name_id field doesn't matter
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "akiko_ma_default_plate",
+			category = "player"
+		}
+	}
+	--Custom Armor Plate Types--
+	for i=1,4,1 do
+		--GenSec's Ceramic Impact Plate--
+		self.values.player["akiko_ceramic_imp_plate_" .. i] = {
+			{
+				armor = 6, -- armor per plate - [60 armor (10*6)]
+				damage_shake = -0.15, -- flinch per plate - [-15 flinch (100*(-0.15))]
+				trama_damage = 2.5, -- trama damage - [1% per 25 damage (10*2.5)]
+			}
+		}
+		self.definitions["akiko_ceramic_imp_plate_" .. i] = {
+			name_id = "akiko_ceramic_imp_plate_" .. i, --name_id field doesn't matter
+			category = "feature",
+			upgrade = {
+				value = 1,
+				upgrade = "akiko_ceramic_imp_plate_" .. i,
+				category = "player"
+			}
+		}
+	end
+	
+	self.definitions.player_armor_plate_bag_amount_1 = {
+		name_id = "menu_armor_plate_bag_amount",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "armor_plate_bag_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_armor_plate_bag_amount_2 = {
+		name_id = "menu_armor_plate_bag_amount",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "armor_plate_bag_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_armor_plate_bag_amount_3 = {
+		name_id = "menu_armor_plate_bag_amount",
+		category = "feature",
+		upgrade = {
+			value = 3,
+			upgrade = "armor_plate_bag_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_armor_plate_bag_amount_4 = {
+		name_id = "menu_armor_plate_bag_amount",
+		category = "feature",
+		upgrade = {
+			value = 4,
+			upgrade = "armor_plate_bag_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_armor_plate_bag_amount_5 = {
+		name_id = "menu_armor_plate_bag_amount",
+		category = "feature",
+		upgrade = {
+			value = 5,
+			upgrade = "armor_plate_bag_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_armor_plate_bag_amount_6 = {
+		name_id = "menu_armor_plate_bag_amount",
+		category = "feature",
+		upgrade = {
+			value = 6,
+			upgrade = "armor_plate_bag_amount",
+			category = "player"
+		}
+	}
+	self.definitions.titan_bd_armor_multiplier_1 = {
+		name_id = "menu_titan_bd_armor_multiplier",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "titan_bd_armor_multiplier",
+			category = "player"
+		}
+	}
+	self.definitions.player_invul_adaptive_plate_varient_1 = {
+		name_id = "menu_player_invul_adaptive_plate_varient_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "invul_adaptive_plate_varient",
+			category = "player"
+		}
+	}
+	self.definitions.invul_adaptive_plate_timer_1 = {
+		name_id = "menu_invul_adaptive_plate_timer",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "invul_adaptive_plate_timer",
+			category = "temporary"
+		}
+	}
+	self.definitions.adaptive_plate_base = {
+		name_id = "menu_adaptive_plate_base",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_base",
+			category = "temporary"
+		}
+	}
+	
+	self.definitions.player_adaptive_plate_multiplier_1 = {
+		name_id = "menu_player_adaptive_plate_multiplier_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_multiplier",
+			category = "player"
+		}
+	}
+	
+	self.definitions.temporary_adaptive_plate_stage_0 = {
+		name_id = "menu_player_health_multiplier",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_stage_0",
+			category = "temporary"
+		}
+	}
+	
+	self.definitions.temporary_adaptive_plate_stage_1 = {
+		name_id = "menu_player_health_multiplier",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_stage_1",
+			category = "temporary"
+		}
+	}
+	
+	self.definitions.temporary_adaptive_plate_stage_2 = {
+		name_id = "menu_player_health_multiplier",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_stage_2",
+			category = "temporary"
+		}
+	}
+	
+	self.definitions.temporary_adaptive_plate_stage_3 = {
+		name_id = "menu_player_health_multiplier",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_stage_3",
+			category = "temporary"
+		}
+	}
+	
+	self.definitions.temporary_adaptive_plate_stage_4 = {
+		name_id = "menu_player_health_multiplier",
+		category = "temporary",
+		upgrade = {
+			value = 1,
+			upgrade = "adaptive_plate_stage_4",
+			category = "temporary"
+		}
+	}
+	
+	--Offyerrocker Liberator Perk Deck (+ SpireWitch)
+	self.values.player.tachi_base = {
+		{
+			cooldown_drain_per_kill = 1,
+			regen_interval = 0.5
+		}
+	}
+	self.values.player.tachi_restore_health = {
+		0
+	}
+	self.values.player.tachi_restore_stamina = {
+		15,
+		30
+	}
+	self.values.player.tachi_hot_cancelled_damage_resistance_consolation = {
+		0.1
+	}
+	self.values.player.tachi_hot_amount = {
+		0.025,
+		0.05,
+		0.1
+	}
+	
+	self.values.player.tachi_hot_duration = {
+		6,
+		8,
+		10
+	}
+	
+	self.definitions.player_tachi_base = {
+		name_id = "menu_deck_liberator_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "tachi_base",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_restore_health_1 = {
+		name_id = "menu_deck_liberator_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "tachi_restore_health",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_hot_cancelled_damage_resistance_consolation = {
+		name_id = "menu_deck_liberator_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "tachi_hot_cancelled_damage_resistance_consolation",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_restore_stamina_1 = {
+		name_id = "menu_deck_liberator_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "tachi_restore_stamina",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_restore_stamina_2 = {
+		name_id = "menu_deck_liberator_5",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "tachi_restore_stamina",
+			category = "player"
+		}
+	}
+	
+	self.definitions.player_tachi_hot_amount_1 = {
+		name_id = "menu_deck_liberator_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "tachi_hot_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_hot_amount_2 = {
+		name_id = "menu_deck_liberator_3",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "tachi_hot_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_hot_amount_3 = {
+		name_id = "menu_deck_liberator_9",
+		category = "feature",
+		upgrade = {
+			value = 3,
+			upgrade = "tachi_hot_amount",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_hot_duration_1 = {
+		name_id = "menu_deck_liberator_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "tachi_hot_duration",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_hot_duration_2 = {
+		name_id = "menu_deck_liberator_3",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "tachi_hot_duration",
+			category = "player"
+		}
+	}
+	self.definitions.player_tachi_hot_duration_3 = {
+		name_id = "menu_deck_liberator_7",
+		category = "feature",
+		upgrade = {
+			value = 3,
+			upgrade = "tachi_hot_duration",
+			category = "player"
+		}
+	}
+	
+	--Offyerrocker Mercenary Perk Deck (+ Kuzidas)
+	self.values.player.kmerc_reactive_absorption = {
+		true
+	}
+	self.values.player.kmerc_crit_chance_per_max_armor = {
+		{
+			crit_chance = 0.01,
+			armor_points = 2.0
+		}
+	}
+	self.values.player.kmerc_swap_speed_per_max_armor = { 0.01 }
+	self.values.player.kmerc_reload_speed_per_max_armor = { 0.01 }
+	self.values.player.kmerc_generic_bonus_per_max_armor_rate = 0.8 --referenced directly; not an upgrade value
+	
+	self.values.player.kmerc_armored_hot = {
+		{
+			hot_percent = 0.01,
+			interval = 5,
+			warmup = 2 -- heal over time counter is reset whenever armor is depleted and initially starts again at 1 second after any amount of armor is regenerated
+		}
+	}
+	self.values.player.kmerc_fatal_triggers_invuln = {
+		{
+			hp = 0.1, --hp instead set to 1 upon taking fatal damage
+			duration = 2 --2 second invuln upon taking fatal damage
+		}
+	}
+	self.values.player.kmerc_bloody_armor = {
+		true
+	}
+	self.values.player.kmerc_passive_health_multiplier = {
+		1.05,
+		1.10
+	}
 
+	self.definitions.player_kmerc_passive_health_multiplier_1 = {
+		name_id = "kmerc_1",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_passive_health_multiplier",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_passive_health_multiplier_2 = {
+		name_id = "kmerc_1",
+		category = "feature",
+		upgrade = {
+			value = 2,
+			upgrade = "kmerc_passive_health_multiplier",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_reactive_absorption = {
+		name_id = "kmerc_1", --name_id field doesn't matter
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_reactive_absorption",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_crit_chance_per_max_armor = {
+		name_id = "kmerc_3",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_crit_chance_per_max_armor",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_swap_speed_bonus_per_max_armor = {
+		name_id = "kmerc_3",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_swap_speed_per_max_armor",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_reload_speed_bonus_per_max_armor = {
+		name_id = "kmerc_3",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_reload_speed_per_max_armor",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_armored_hot = {
+		name_id = "kmerc_5",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_armored_hot",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_fatal_triggers_invuln = {
+		name_id = "kmerc_7",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_fatal_triggers_invuln",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_bloody_armor = {
+		name_id = "kmerc_9",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_bloody_armor",
+			category = "player"
+		}
+	}
+	self.definitions.player_kmerc_suppression_immunity = {
+		name_id = "kmerc_9",
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "kmerc_suppression_immunity",
+			category = "player"
+		}
+	}
 end
+
+Hooks:PostHook(UpgradesTweakData,"_grenades_definitions","res_mreowp_grenades_definitions",function(self)
+	--Akiko Armor Plate Perk Deck (og. Hacker_lyx)
+	self.definitions.adaptive_plate = {
+		category = "grenade"
+	}
+	--Offyerrocker Liberator Perk Deck (+ SpireWitch)
+	self.definitions.tachi = {
+		category = "grenade"
+	}
+end)
 
 function UpgradesTweakData:_smg_definitions()
 	self.definitions.smg_reload_speed_multiplier = {
