@@ -5804,7 +5804,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bullseye--
 				["menu_prison_wife_beta_sc"] = "Bullseye",
-				["menu_prison_wife_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nHeadshots regenerate #{skill_color}#$skill_value_b1## armor; has a cooldown of #{important_1}#$skill_value_b2## seconds.\n\nLethal headshots reduce the cooldown by #{skill_color}#$skill_value_b3## seconds. $anarc_disable\n\nACE: #{owned}#$pro##\nHeadshots regenerate an additional #{skill_color}#$skill_value_p1## armor.\n\nThe cooldown reduction is increased by an additional #{skill_color}#$skill_value_p2## seconds. $anarc_disable\n\n",
+				["menu_prison_wife_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nHeadshots regenerate #{skill_color}#$skill_value_b1## armor; has a cooldown of #{important_1}#$skill_value_b2## seconds.\n\nLethal headshots reduce the cooldown by #{skill_color}#$skill_value_b3## seconds. $anarc_disable$akiko_ma_disable\n\nACE: #{owned}#$pro##\nHeadshots regenerate an additional #{skill_color}#$skill_value_p1## armor.\n\nThe cooldown reduction is increased by an additional #{skill_color}#$skill_value_p2## seconds. $anarc_disable$akiko_ma_disable\n\n",
 
 				--Iron Man
 				["menu_juggernaut_beta_sc"] = "Iron Man",
