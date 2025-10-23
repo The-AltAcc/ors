@@ -344,19 +344,12 @@ function PlayerDamage:_apply_damage(attack_data, damage_info, variant, t)
 		self:_hit_direction(attack_data.attacker_unit:position(), attack_data.col_ray and attack_data.col_ray.ray or damage_info.attack_dir)
 	end
 	
-	--Akiko Armor Plate Perk Deck (og. Hacker_lyx) - Modifies Grace Periods and Damage Interval
-	local pm = managers.player -- moved up here to prevent crash
-	if pm:has_category_upgrade("player", "akiko_ma_default_plate") and self:get_real_armor() > 0 then
-		--placeholder
-		self._last_received_dmg = math.huge
-		self._next_allowed_dmg_t = Application:digest_value(t + self._dmg_interval, true)
-	else
-		self._last_received_dmg = math.huge --As opposed to raw damage (attack_data.damage), just an idea to see if the game feels better without grace piercing
-		self._next_allowed_dmg_t = Application:digest_value(t + self._dmg_interval, true)
-	end
+	self._last_received_dmg = math.huge --As opposed to raw damage (attack_data.damage), just an idea to see if the game feels better without grace piercing
+	self._next_allowed_dmg_t = Application:digest_value(t + self._dmg_interval, true)
 
 	--Perform overall damage reduction calcs.
 	--NOTE: Stoic damage delay and Deflection are handled in _calc_health_damage()
+	local pm = managers.player
 	attack_data.damage = attack_data.damage * pm:damage_reduction_skill_multiplier(variant)
 	local damage_absorption = pm:damage_absorption()
 	if damage_absorption > 0 then
@@ -1971,6 +1964,14 @@ function PlayerDamage:_calc_armor_damage(attack_data)
 			--test function fix later i fucking guess (replace 0.2 with has_player_upgrade shit for top too)
 			if pm:has_activate_temporary_upgrade("temporary", "adaptive_plate_stage_0") then
 				attack_data.damage = attack_data.damage * 0.2
+			end
+			
+			--placeholder for damage grace
+			if pm:has_category_upgrade("player", "scaling_armor_break_grace") then
+				local t = pm:player_timer():time()
+				local base_armor = tweak_data.player.damage.ARMOR_INIT + pm:body_armor_value("armor")
+				local armor_break_grace = (math.floor(base_armor/pm:upgrade_value("player", "scaling_armor_break_grace", 1).armor_steps) * pm:upgrade_value("player", "scaling_armor_break_grace", 0).grace_mod) or 0
+				self._next_allowed_dmg_t = Application:digest_value(t + (self._dmg_interval + armor_break_grace), true)
 			end
 		end
 		--End of that stuff
