@@ -1263,6 +1263,7 @@ function SkillTreeTweakData:init(tweak_data)
 					},
 					[2] = {
 						upgrades = {
+							"player_grant_night_vision",
 							"player_buy_bodybags_asset",
 							"player_additional_assets",
 							"player_buy_spotter_asset"

@@ -54,6 +54,7 @@ function PlayerStandard:init(unit)
 		self._slotmask_bullet_impact_targets = managers.mutators:modify_value("PlayerStandard:init:melee_slot_mask", self._slotmask_bullet_impact_targets)
 		self._slotmask_bullet_impact_targets = managers.modifiers:modify_value("PlayerStandard:init:melee_slot_mask", self._slotmask_bullet_impact_targets)
 	end
+	self._nighaaatvision_infrared_highlight = false
 end
 
 --Allows night vision to be used with any mask.
@@ -70,8 +71,13 @@ function PlayerStandard:set_night_vision_state(state)
 		}
 	end
 
+	self._nighaaatvision_infrared_highlight = false
 	--This conditional is hilarious in vanilla btw.
 	if self._state_data.night_vision_active == state then
+		return
+	end
+	--Now needs perk :3
+	if not managers.player:has_category_upgrade("player", "grant_night_vision") then
 		return
 	end
 
@@ -91,12 +97,20 @@ function PlayerStandard:set_night_vision_state(state)
 		end
 
 		managers.viewport:create_global_environment_modifier(ambient_color_key, true, light_modifier)
+		if managers.player:has_category_upgrade("weapon", "grant_op_af_infrared") then
+			self._nighaaatvision_infrared_highlight = true
+		end
 	else
 		managers.viewport:destroy_global_environment_modifier(ambient_color_key)
 	end
 
 	self._unit:sound():play(state and "night_vision_on" or "night_vision_off", nil, false)
-	managers.environment_controller:set_default_color_grading(effect, state)
+	if self._nighaaatvision_infrared_highlight then
+		managers.environment_controller:set_default_color_grading("scope_infrared", state)
+	else
+		managers.environment_controller:set_default_color_grading(effect, state)
+	end
+	
 	managers.environment_controller:refresh_render_settings()
 
 	self._state_data.night_vision_active = state
@@ -5777,3 +5791,18 @@ if AdvMov and AdvMov.settings then --Everything here was originally from Solo Qu
 	end
 
 end
+
+--Akiko Infrared Highlight
+Hooks:PostHook(PlayerStandard, "_update_fwd_ray", "InfraredHighlighting__update_fwd_ray", function(self)
+	if alive(self._equipped_unit) and self._equipped_unit:base() then
+		if self._nighaaatvision_infrared_highlight and self._equipped_unit:base().check_nvg_infrared_highlight then
+			self._equipped_unit:base():check_nvg_infrared_highlight()
+			--Temp for now ig (Kinda realize this is bad for game but oh well)
+			self:_interupt_action_steelsight(0)
+		elseif self._state_data.in_full_steelsight and self._equipped_unit:base().check_infrared_highlight and not self._equipped_unit:base():is_second_sight_on() then
+			self._equipped_unit:base():check_infrared_highlight()
+		elseif self._state_data.in_full_steelsight and self._equipped_unit:base().check_second_infrared_highlight then
+			self._equipped_unit:base():check_second_infrared_highlight()
+		end
+	end
+end)

@@ -1062,6 +1062,8 @@ function NewRaycastWeaponBase:_update_stats_values(disallow_replenish, ammo_data
 	self._nato = self:weapon_tweak_data().nato
 	self._plasma_b = self:weapon_tweak_data().plasma_b
 	self._terminator = self:weapon_tweak_data().terminator
+	self._can_infrared_highlight = managers.weapon_factory:has_perk("infrared_highlight", self._factory_id, self._blueprint)
+	self._can_second_infrared_highlight = managers.weapon_factory:has_perk("second_infrared_highlight", self._factory_id, self._blueprint)
 
 	if not self:is_npc() then
 		local weapon = {

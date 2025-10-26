@@ -5925,7 +5925,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Sixth Sense--
 				["menu_chameleon_beta_sc"] = "Sixth Sense",
-				["menu_chameleon_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou gain the ability to #{skill_color}#automatically mark## enemies within a #{skill_color}#10## meter radius around you after standing still for #{skill_color}#3.5## seconds.\n\nACE: #{owned}#$pro##\nYou #{skill_color}#gain access to all insider assets.##",
+				["menu_chameleon_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou gain the ability to #{skill_color}#automatically mark## enemies within a #{skill_color}#10## meter radius around you after standing still for #{skill_color}#3.5## seconds.\n\nACE: #{owned}#$pro##\nYou #{skill_color}#gain access to all insider assets and a set of night vision goggles to use during heists.##\n\n#{risk}#NOTE: Activate Night Vision by holding down the Fire Mode button.##",
 
 				--ECM Overdrive--
 				["menu_cleaner_beta_sc"] = "ECM Overdrive",

@@ -5973,6 +5973,27 @@ function UpgradesTweakData:_player_definitions()
 		}
 	}
 	
+	--Akiko Added Upgradetweaks:
+	self.values.player.grant_night_vision = {true}
+	self.values.weapon.grant_op_af_infrared = {false} -- false for now lol
+	
+	self.definitions.player_grant_night_vision = {
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "grant_night_vision",
+			category = "player"
+		}
+	}
+	self.definitions.weapon_grant_op_af_infrared = {
+		category = "feature",
+		upgrade = {
+			value = 1,
+			upgrade = "grant_op_af_infrared",
+			category = "weapon"
+		}
+	}
+	
 	--Akiko Armor Plate Perk Deck (og. Hacker_lyx) - Defined Upgradetweak Value
 	self.values.temporary.adaptive_plate_base = {
 		{
@@ -7498,77 +7519,4 @@ Hooks:PostHook(UpgradesTweakData, "_weapon_definitions", "ResWeaponSkills", func
 			category = "pistol"
 		}
 	}
-end)
-
-Hooks:PostHook(UpgradesTweakData, "init", "ResOtherModSkills", function(self)
-
-	--MERCENARY DECK
-		self.values.player.kmerc_generic_bonus_per_max_armor_rate = 0.8
-		self.values.player.kmerc_swap_speed_per_max_armor = { 0.01 }
-		self.values.player.kmerc_reload_speed_per_max_armor = { 0.01 }
-
-		self.values.player.kmerc_crit_chance_per_max_armor = {
-			{
-				crit_chance = 0.01,
-				armor_points = 2.0
-			}
-		}
-		self.values.player.kmerc_armored_hot = {
-			{
-				hot_percent = 0.01,
-				interval = 5,
-				warmup = 2 -- heal over time counter is reset whenever armor is depleted and initially starts again at 1 second after any amount of armor is regenerated
-			}
-		}
-		self.values.player.kmerc_fatal_triggers_invuln = {
-			{
-				hp = 0.1, --hp instead set to 1 upon taking fatal damage
-				duration = 2 --2 second invuln upon taking fatal damage
-			}
-		}
-		self.values.player.kmerc_passive_health_multiplier = {
-			1.05,
-			1.10
-		}
-
-	--LIBERATOR DECK
-		self.values.player.tachi_base = {
-			{
-				cooldown_drain_per_kill = 1,
-				regen_interval = 0.5
-			}
-		}
-		self.values.player.tachi_restore_health = {
-			0
-		}
-		self.values.player.tachi_restore_stamina = {
-			15,
-			30
-		}
-		self.values.player.tachi_hot_cancelled_damage_resistance_consolation = {
-			0.1
-		}
-		self.values.player.tachi_hot_amount = {
-			0.025,
-			0.05,
-			0.1
-		}
-		
-		self.values.player.tachi_hot_duration = {
-			6,
-			8,
-			10
-		}
-
-		self.definitions.player_tachi_hot_amount_3 = {
-			name_id = "menu_deck_liberator_9",
-			category = "feature",
-			upgrade = {
-				value = 3,
-				upgrade = "tachi_hot_amount",
-				category = "player"
-			}
-		}
-
-
 end)
