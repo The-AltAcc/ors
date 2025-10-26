@@ -24,6 +24,80 @@ local FIRE_MODE_IDS = {
 }
 local is_pro = Global.game_settings and Global.game_settings.one_down
 
+--Weaponlib Functions
+WeaponLibNRCWBRegis = {}
+WeaponLibNRCWBRegis.init_registrators = WeaponLibNRCWBRegis.init_registrators or {}
+WeaponLibNRCWBRegis.weapon_registrators = WeaponLibNRCWBRegis.weapon_registrators or {}
+WeaponLibNRCWBRegis.part_registrators = WeaponLibNRCWBRegis.part_registrators or {}
+
+Hooks:PostHook(NewRaycastWeaponBase, "init", "weaponlib_newraycastweaponbase_init", function(self, unit)
+	for _, registrator in pairs(WeaponLibNRCWBRegis.init_registrators) do
+		registrator(self, unit)
+	end
+end)
+
+Hooks:PostHook(NewRaycastWeaponBase, "clbk_assembly_complete", "weaponlib_newraycastweaponbase_clbk_assembly_complete", function(self, clbk, parts, blueprint)
+	local weapon_data = self:weapon_tweak_data()
+	local weapon_factory_data = tweak_data.weapon.factory[self._factory_id]
+
+	tweak_data.weapon.factory[self._factory_id].animations = tweak_data.weapon.factory[self._factory_id].animations or {}
+
+	for _, registrator in pairs(WeaponLibNRCWBRegis.weapon_registrators) do
+		registrator(self, self:_weapon_tweak_data_id(), weapon_data, self._factory_id, weapon_factory_data)
+	end
+
+	for part_id, part in pairs(self._parts) do
+		local part_data = managers.weapon_factory:get_part_data_by_part_id_from_weapon(part_id, self._factory_id, self._blueprint)
+
+		for _, registrator in pairs(WeaponLibNRCWBRegis.part_registrators) do
+			registrator(self, part, part_id, part_data)
+		end
+	end
+end)
+
+-- Scopes
+table.insert(WeaponLibNRCWBRegis.init_registrators, function(self, unit)
+	self._scope_index_lookup = {}
+	self._scope_part_ids = {}
+	self._scope_steelsight_weapon_visible = {}
+	self._scope_effects = {}
+	self._scope_overlays = {}
+end)
+
+table.insert(WeaponLibNRCWBRegis.weapon_registrators, function(self, weapon_id, weapon_data, weapon_factory_id, weapon_factory_data)
+	self._scope_index_lookup = {}
+	self._scope_part_ids = {}
+	self._scope_steelsight_weapon_visible = {}
+	self._scope_effects = {}
+	self._scope_overlays = {}
+
+	self._scope_second_sight_setup_index = 2
+end)
+
+table.insert(WeaponLibNRCWBRegis.part_registrators, function(self, part, part_id, part_data)
+	local is_sight = part_data.type == "sight"
+	local is_second_sight = part_data.perks and table.contains(part_data.perks, "second_sight")
+
+	if is_sight or is_second_sight then
+		local index = 1
+		if not is_sight then
+			index = self._scope_second_sight_setup_index
+			self._scope_second_sight_setup_index = self._scope_second_sight_setup_index + 1
+		end
+
+		self._scope_index_lookup[part_id] = index
+		self._scope_part_ids[index] = part_id
+		self._scope_steelsight_weapon_visible[index] = part_data.ads_weapon_visible == nil and true or part_data.ads_weapon_visible
+		self._scope_effects[index] = part_data.ads_shader or "payday_off"
+		self._scope_overlays[index] = part_data.ads_overlay
+	end
+end)
+
+function NewRaycastWeaponBase:set_visual_scope_index(scope_index)
+	self._visual_scope_index = scope_index
+end
+--End of Weapoonlib Functions
+
 --Adds ability to define per weapon category AP skills.
 Hooks:PostHook(NewRaycastWeaponBase, "init", "ResExtraSkills", function(self)
 	--Since armor piercing chance is no longer used, lets use weapon category to determine armor piercing baseline.
@@ -2574,8 +2648,13 @@ function NewRaycastWeaponBase:_set_parts_enabled(enabled)
 	end
 end
 
+--Weaponlib Modified Function (_sets_parts_visible)
 function NewRaycastWeaponBase:_set_parts_visible(visible)
 	if self._parts then
+		
+		local hide_weapon_base = visible == false
+		local hide_all_parts = hide_weapon_base
+	
 		local empty_s = Idstring("")
 		local anim_groups, is_visible = nil
 		local is_player = self._setup.user_unit == managers.player:player_unit()
@@ -2584,39 +2663,60 @@ function NewRaycastWeaponBase:_set_parts_visible(visible)
 		if is_player then
 			steelsight_swap_state = self._setup.user_unit:camera() and alive(self._setup.user_unit:camera():camera_unit()) and self._setup.user_unit:camera():camera_unit():base():get_steelsight_swap_state() or false
 		end
+		if not hide_all_parts then
+			hide_all_parts = not self:get_scope_steelsight_weapon_visible(self._visual_scope_index)
 
-		for part_id, data in pairs(self._parts) do
-			local unit = data.unit or data.link_to_unit
+			if not hide_all_parts then
+				for part_id, data in pairs(self._parts) do
+					local unit = data.unit or data.link_to_unit
 
-			if alive(unit) then
-				is_visible = visible and self:_is_part_visible(part_id)
-				is_visible = is_visible and (self._parts[part_id].steelsight_visible == nil or self._parts[part_id].steelsight_visible == steelsight_swap_state)
+					if alive(unit) then
+						is_visible = visible and self:_is_part_visible(part_id)
+						is_visible = is_visible and (self._parts[part_id].steelsight_visible == nil or self._parts[part_id].steelsight_visible == steelsight_swap_state)
 
-				unit:set_visible(is_visible)
+						unit:set_visible(is_visible)
 
-				if not visible and (not unit:base() or (unit:base().GADGET_TYPE ~= "second_sight" and unit:base().GADGET_TYPE ~= "simple_anim")) then
-					anim_groups = unit:anim_groups()
+						if not visible and (not unit:base() or (unit:base().GADGET_TYPE ~= "second_sight" and unit:base().GADGET_TYPE ~= "simple_anim")) then
+							anim_groups = unit:anim_groups()
 
-					for _, anim in ipairs(anim_groups) do
-						if anim ~= empty_s then
-							unit:anim_play_to(anim, 0)
-							unit:anim_stop()
+							for _, anim in ipairs(anim_groups) do
+								if anim ~= empty_s then
+									unit:anim_play_to(anim, 0)
+									unit:anim_stop()
+								end
+							end
+						end
+
+						if unit:digital_gui() then
+							unit:digital_gui():set_visible(visible)
+						end
+
+						if unit:digital_gui_upper() then
+							unit:digital_gui_upper():set_visible(visible)
+						end
+
+						if unit:digital_gui_thd() then
+							unit:digital_gui_thd():set_visible(visible)
 						end
 					end
 				end
+			end
+		end
+		if hide_all_parts then
+			for part_id, data in pairs(self._parts) do
+				local unit = data.unit or data.link_to_unit
 
-				if unit:digital_gui() then
-					unit:digital_gui():set_visible(visible)
-				end
-
-				if unit:digital_gui_upper() then
-					unit:digital_gui_upper():set_visible(visible)
-				end
-
-				if unit:digital_gui_thd() then
-					unit:digital_gui_thd():set_visible(visible)
+				if alive(unit) then
+					unit:set_visible(false)
+					self:_set_digital_gui_visibility(unit, false)
 				end
 			end
+		end
+
+		if hide_weapon_base then
+			self._unit:set_visible(false)
+		else
+			self._unit:set_visible(true)
 		end
 	end
 
@@ -2670,4 +2770,114 @@ if SKSWeaponBase then
 			self:weapon_tweak_data().animations.reload_name_id = "sks"
 		end
 	end
+end
+
+--Akiko Weaponlib Based Functions
+
+function NewRaycastWeaponBase:_set_digital_gui_visibility(unit, visible)
+	if unit:digital_gui() then
+		unit:digital_gui():set_visible(visible)
+	end
+
+	if unit:digital_gui_upper() then
+		unit:digital_gui_upper():set_visible(visible)
+	end
+
+	if unit:digital_gui_thd() then
+		unit:digital_gui_thd():set_visible(visible)
+	end
+end
+
+function NewRaycastWeaponBase:get_scope_steelsight_weapon_visible(scope_index)
+	return self._scope_steelsight_weapon_visible and (self._scope_steelsight_weapon_visible[scope_index] == nil and true or self._scope_steelsight_weapon_visible[scope_index])
+end
+
+function NewRaycastWeaponBase:get_scope_effect(scope_index)
+	return self._scope_effects and self._scope_effects[scope_index] or "payday_off"
+end
+
+function NewRaycastWeaponBase:get_scope_overlay(scope_index)
+	return self._scope_overlays and self._scope_overlays[scope_index] or nil
+end
+
+function NewRaycastWeaponBase:get_scope_overlay_border_color(scope_index)
+	--return self._scope_overlay_border_colors and self._scope_overlay_border_colors[scope_index] or Color.black
+	return Color.black
+end
+
+function is_enemy_in_front(player_unit, enemy_unit)
+	-- Get player head position and forward direction
+	local player_pos = player_unit:movement():m_head_pos()
+	local player_forward = player_unit:movement():m_head_rot():y() -- Forward vector
+
+	-- Get enemy position
+	local enemy_pos = enemy_unit:movement():m_pos()
+
+	-- Calculate vector from player to enemy
+	local to_enemy = enemy_pos - player_pos
+
+	-- Normalize vectors for dot product
+	local to_enemy_normalized = to_enemy:normalized()
+	local player_forward_normalized = player_forward:normalized()
+	
+	-- Calculate dot product to check angle
+	local dot_product = to_enemy_normalized:dot(player_forward_normalized)
+	
+	-- Log dot product
+	--log("dot_product: " .. tostring(dot_product))
+
+	if dot_product < 0 then
+		return false
+	end
+
+	return true
+end
+
+function NewRaycastWeaponBase:gen_infrared_highlight()
+	local enemiesaa = managers.enemy:all_enemies() or {}
+	local civiliansaa = managers.enemy:all_civilians() or {}
+	local friendlyallisses = managers.groupai:state():all_char_criminals() or {}
+	local user_unit = managers.player:player_unit() or false
+	if not user_unit then
+		return
+	end
+	for u_key, u_data in pairs(enemiesaa) do
+		if u_data.unit and alive(u_data.unit) and u_data.unit:contour() and is_enemy_in_front(user_unit, u_data.unit) then
+			u_data.unit:contour():add("mark_infrared", false)
+		end
+	end
+	for u_key, u_data in pairs(civiliansaa) do
+		if u_data.unit and alive(u_data.unit) and u_data.unit:contour() and is_enemy_in_front(user_unit, u_data.unit) then
+			u_data.unit:contour():add("mark_infrared", false)
+		end
+	end
+	for u_key, u_data in pairs(friendlyallisses) do
+		if u_data.unit and alive(u_data.unit) and u_data.unit:contour() and is_enemy_in_front(user_unit, u_data.unit) then
+			u_data.unit:contour():add("mark_infrared", false)
+		end
+	end
+end
+
+function NewRaycastWeaponBase:check_infrared_highlight()
+	if not self._can_infrared_highlight then
+		return
+	end
+
+	NewRaycastWeaponBase:gen_infrared_highlight()
+end
+
+function NewRaycastWeaponBase:check_second_infrared_highlight()
+	if not self._can_second_infrared_highlight then
+		return
+	end
+
+	NewRaycastWeaponBase:gen_infrared_highlight()
+end
+
+function NewRaycastWeaponBase:check_nvg_infrared_highlight()
+	if not managers.player:has_category_upgrade("weapon", "grant_op_af_infrared") then
+		return
+	end
+
+	NewRaycastWeaponBase:gen_infrared_highlight()
 end
