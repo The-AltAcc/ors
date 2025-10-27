@@ -339,6 +339,7 @@
 				<hook file="sc/player_actions/skills/playeractionammoefficiency.lua" source_file="lib/player_actions/skills/playeractionammoefficiency"/>
 				<hook file="sc/player_actions/skills/playeractionunseenstrike.lua" source_file="lib/player_actions/skills/playeractionunseenstrike"/>
 				<hook file="sc/player_actions/skills/playeractiontagteam.lua" source_file="lib/player_actions/skills/playeractiontagteam"/>
+				<hook file="sc/player_actions/skills/playeractiontachi.lua" source_file="lib/player_actions/playeraction"/>
 			<!--NETWORK-->
 			<hook file="sc/utils/inventorydescription.lua" source_file="lib/utils/inventorydescription"/>
 			<hook file="sc/states/missionendstate.lua" source_file="lib/states/missionendstate"/>
@@ -790,6 +791,29 @@
 	<Package id="packages/custom_fonts" file="fonts.xml" use_clbk="self:LoadFonts"/>
 	<Package id="packages/addhudmisc" file="addhudmisc.xml"/>
 	<Package id="packages/envcore" file="environments.xml"/>
+	
+	<!--///AKIKO PACKAGE\\\-->
+	<Package id="packages/akikoforcedtoload" file="packages/akiko_package/forcedtoload.xml" use_clbk="self:LoadSCAssets"/>
+	<Package id="packages/addwarthog" file="packages/akiko_package/addwarthog.xml"/>
+	<Package id="packages/addxofunit" file="packages/akiko_package/addxofunit.xml"/>
+	<Package id="packages/addusngwarthog" file="packages/akiko_package/addusngwarthog.xml"/>
+	<Package id="packages/addgroundsniperng" file="packages/akiko_package/addgroundsniperng.xml"/>
+	<Package id="packages/addtitanshielddozer" file="packages/akiko_package/addtitanshielddozer.xml"/>
+	<Package id="packages/addgroundsniperfbi" file="packages/akiko_package/addgroundsniperfbi.xml"/>
+	<Package id="packages/addgroundsniperswat" file="packages/akiko_package/addgroundsniperswat.xml"/>
+	<Package id="packages/addgroundsnipergensec" file="packages/akiko_package/addgroundsnipergensec.xml"/>
+	<Package id="packages/addgigndoc" file="packages/akiko_package/addgigndoc.xml"/>
+	<Package id="packages/addnationalguards" file="packages/akiko_package/addnationalguards.xml"/>
+	<Package id="packages/addatfagent" file="packages/akiko_package/addatfagent.xml"/>
+	<Package id="packages/addciaagent" file="packages/akiko_package/addciaagent.xml"/>
+	<Package id="packages/addirsunits" file="packages/akiko_package/addirsunits.xml"/>
+	<Package id="packages/addzealcamounits" file="packages/akiko_package/addzealcamounits.xml"/>
+	<Package id="packages/addzealnoirunits" file="packages/akiko_package/addzealnoirunits.xml"/>
+	<Package id="packages/addngminigun" file="packages/akiko_package/addngminigun.xml"/>
+	<Package id="packages/addtazerdozer" file="packages/akiko_package/addtazerdozer.xml"/>
+	<Package id="packages/addzealtazerdozer" file="packages/akiko_package/addzealtazerdozer.xml"/>
+	<Package id="packages/addsharedassets" file="packages/akiko_package/addsharedassets.xml"/>
+	<Package id="packages/forcedtocrash" file="packages/akiko_package/forcedtocrash.xml"/>
 
     <!-- ///DIFF PACKAGES AMERICA\\\ -->
     <Package id="packages/normal_sc_america" file="packages/america_diff/normal_sc_america.xml"/>

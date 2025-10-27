@@ -7,8 +7,70 @@ Month = os.date("%m")
 Day = os.date("%d")
 
 restoration._mod_path = restoration:GetPath()
+
+--Akiko Networking Shit
+local akiko_default_unique_units_keys = {
+	zealorng = {
+		default = {"addzealcamounits", "addzealnoirunits"}
+	},
+}
+restoration.loaded_akiko_dynamic_packages = restoration.loaded_akiko_dynamic_packages or {}
+function restoration:akiko_load_difficulty_package(package_name)
+	if PackageManager:package_exists(package_name) and not PackageManager:loaded(package_name) then
+		table.insert(restoration.loaded_akiko_dynamic_packages, package_name)
+		PackageManager:load(package_name)
+	end
+end
+
+restoration.akiko_unique_units_keys = restoration.akiko_unique_units_keys or akiko_default_unique_units_keys
+function restoration:akiko_randomize_unique_units()
+	if Network:is_server() then
+		for key,setting in pairs(akiko_default_unique_units_keys) do
+			local blahmreowp = akiko_default_unique_units_keys[key][data_ai_type] or akiko_default_unique_units_keys[key].default
+			restoration.akiko_unique_units_keys[key] = type(blahmreowp) == "table" and table.random(blahmreowp) or blahmreowp
+		end
+	end
+end
+
+function restoration:akiko_send_sync_unique_units(to)
+	if Network:is_server() then
+		local akiko_unit_data = restoration.akiko_unique_units_keys
+		local akiko_unit_string = akiko_unit_data and LuaNetworking:TableToString(akiko_unit_data)
+		if akiko_unit_string and akiko_unit_string ~= "" then
+			if to and managers.network:session():peer(to) then
+				LuaNetworking:SendToPeer(to,"akiko_unit_network_keys",akiko_unit_string)
+			else
+				LuaNetworking:SendToPeers("akiko_unit_network_keys",akiko_unit_string)
+			end
+			log("**********************************************************Sent AkikoUniqueUnitSync with results: ")
+			Utils.PrintTable(akiko_unit_data)
+			log("**********************************************************End")
+		end
+	end
+end
+
+function restoration:akiko_load_unique_dynamic_units(loadduringonlyserver)
+	loadduringonlyserver = loadduringonlyserver or false
+	local function theloadingsystem()
+		if restoration.akiko_unique_units_keys then
+			log("**********************************************************DEBUGGGGG RESTORATION VARIABLE FOR AKIKO with results: ")
+			Utils.PrintTable(restoration.akiko_unique_units_keys)
+			log("**********************************************************End. entry.lua")
+			if restoration.akiko_unique_units_keys.zealorng then
+				restoration:akiko_load_difficulty_package("packages/" .. restoration.akiko_unique_units_keys.zealorng)
+			end
+		end
+	end
+	if loadduringonlyserver and Network:is_server() then
+		theloadingsystem()
+	elseif not loadduringonlyserver and not Network:is_server() then
+		theloadingsystem()
+	end
+end
+
 function restoration:Init()
 	restoration.log_shit("SC: LOADING: " .. self.ModPath)
+	restoration:akiko_randomize_unique_units() -- randomize units early :3
 	restoration.captain_types = {
 		winter = {
 			spawn_group = "Cap_Winters",
@@ -878,6 +940,7 @@ DisablePDTHChallengeStandalone = DisablePDTHChallengeStandalone or {}
 Hooks:Register("restoration_on_synced_peer")
 Hooks:Add("restoration_on_synced_peer","restoration_do_sync_peer_stuff",function(peer,peer_id)
 	restoration:send_sync_environment(peer,peer_id)
+	restoration:akiko_send_sync_unique_units(peer,peer_id)
 end)
 
 function restoration:get_env_setting(name)

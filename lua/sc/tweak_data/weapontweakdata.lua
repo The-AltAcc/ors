@@ -1266,10 +1266,32 @@ local crew_wep_preset = {
 		--Railgun
 		self.railgun_npc = deep_clone(self.m14_sniper_npc)
 		self.railgun_npc.CLIP_AMMO_MAX = 4
-		self.railgun_npc.DAMAGE = 18
+		--self.railgun_npc.DAMAGE = 18
+		self.railgun_npc.DAMAGE = 20
 		self.railgun_npc.trail_effect = Idstring("effects/particles/weapons/sniper_trail_sc")
 		self.railgun_npc.use_sniper_trail = true
 		--self.railgun_npc.sounds.prefix = "barrett_npc"
+		
+		--Nothing (Sniper/Rifles)
+		self.nothin_rifles_npc = deep_clone(self.m14_sniper_npc)
+		self.nothin_rifles_npc.DAMAGE = 0
+		self.nothin_rifles_npc.can_shoot_through_enemy = false
+		self.nothin_rifles_npc.can_shoot_through_shield = false
+		self.nothin_rifles_npc.can_shoot_through_wall = false
+		self.nothin_rifles_npc.CLIP_AMMO_MAX = 0
+		self.nothin_rifles_npc.NR_CLIPS_MAX = 0
+		self.nothin_rifles_npc.hold = "akimbo_pistol"
+		self.nothin_rifles_npc.alert_size = 0
+		self.nothin_rifles_npc.suppression = 0
+		self.nothin_rifles_npc.armor_piercing = false
+		
+		--Port Railgun
+		self.port_railgun_npc = deep_clone(self.railgun_npc)
+		self.port_railgun_npc.usage = "is_groundsniper"
+		
+		--Ground Sniper M14
+		self.groundsniper_m14_npc = deep_clone(self.m14_sniper_npc)
+		self.groundsniper_m14_npc.usage = "is_groundsniper_no_laser"
 	end
 
 	function WeaponTweakData:_init_data_heavy_snp_npc()
@@ -1298,6 +1320,11 @@ local crew_wep_preset = {
 		self.r870_taser_npc.sounds.prefix = "keltec_npc"
 		self.r870_taser_npc.DAMAGE = 5
 		self.r870_taser_npc.CLIP_AMMO_MAX = 8
+		
+		self.ksg_npc = deep_clone(self.r870_npc)
+		self.ksg_npc.sounds.prefix = "keltec_npc"
+		self.ksg_npc.DAMAGE = 5
+		self.ksg_npc.CLIP_AMMO_MAX = 14
 
 		self.m500_npc = deep_clone(self.r870_npc)
 		self.m500_npc.sounds.prefix = "m590_npc"
@@ -1529,6 +1556,16 @@ local crew_wep_preset = {
 		self.benelli_npc.FIRE_MODE = "single"
 		self.benelli_npc.usage = "is_shotgun_semi"
 		self.benelli_npc.anim_usage = "is_shotgun_pump"
+		
+		self.spas12_npc = deep_clone(self.saiga_npc)
+		self.spas12_npc.sounds.prefix = "spas_npc"
+		self.spas12_npc.auto.fire_rate = 0.064
+		self.spas12_npc.DAMAGE = 4
+		self.spas12_npc.CLIP_AMMO_MAX = 8
+		self.spas12_npc.suppression = 2
+		self.spas12_npc.FIRE_MODE = "single"
+		self.spas12_npc.usage = "is_shotgun_semi"
+		self.spas12_npc.anim_usage = "is_shotgun_pump"
 
 		self.bayou_npc = deep_clone(self.benelli_npc)
 		self.bayou_npc.sounds.prefix = "spas_npc"
@@ -2075,7 +2112,7 @@ local crew_wep_preset = {
 		self.m32_npc.sounds.prefix = "mgl_npc"
 		self.m32_npc.anim_usage = "is_shotgun_pump"
 		self.m32_npc.usage = "is_m32"
-		self.m32_npc.projectile = "bravo_frag"
+		self.m32_npc.projectile = "launcher_frag_m32"
 		self.m32_npc.CLIP_AMMO_MAX = 6
 		self.m32_npc.looped_reload_speed = nil
 		self.m32_npc.has_fire_animation = true

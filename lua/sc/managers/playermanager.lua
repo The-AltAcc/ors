@@ -1,3 +1,7 @@
+local akiko_tramadamage_ap_default = {0,0,0,0,0} -- fifth value is for if all plates break? ig
+PlayerManager.adaptive_plate_stage = PlayerManager.adaptive_plate_stage or 0
+PlayerManager.akiko_ma_stat_modify = PlayerManager.akiko_ma_stat_modify or 0
+PlayerManager.akiko_tramadamage_ap = PlayerManager.akiko_tramadamage_ap or akiko_tramadamage_ap_default
 --Local functions requested elsewhere. These are vanilla code.
 local function make_double_hud_string(a, b)
 	return string.format("%01d|%01d", a, b)
@@ -48,6 +52,7 @@ Hooks:PostHook(PlayerManager, "init", "ResInit", function(self)
 		self._merciless_t = 0
 		self._merciless_stacks = 0
 	end
+	self.akiko_tramadamage_ap = akiko_tramadamage_ap_default
 end)
 
 Hooks:PostHook(PlayerManager, "update", "ResPlayerManagerUpdate", function(self, t, dt)
@@ -1159,7 +1164,8 @@ function PlayerManager:on_lethal_headshot_dealt(attacker_unit, attack_data)
 
 	local regen_armor_bonus_cd_reduction = managers.player:upgrade_value("player", "headshot_regen_armor_bonus_cd_reduction", 0)
 	local anarchist = managers.player:has_category_upgrade("player", "armor_grinding")
-	if self._on_headshot_dealt_t and not anarchist then
+	local akiko_ma_perk = managers.player:has_category_upgrade("player", "akiko_ma_default_plate")
+	if self._on_headshot_dealt_t and not (anarchist or akiko_ma_perk) then
 		self._on_headshot_dealt_t = self._on_headshot_dealt_t - regen_armor_bonus_cd_reduction
 		managers.hud:change_cooldown("bullseye", -regen_armor_bonus_cd_reduction)
 	end
@@ -1985,4 +1991,325 @@ function PlayerManager:set_carry(...)
 	-- This will be used to prevent the player from picking a new bag
 	-- within the next 0.1 sec
 	PlayerStandard:block_use_item()
+end
+
+--Akiko Armor Plate Perk Deck (og. Hacker_lyx) 
+--Functions:
+
+function PlayerManager:akiko_damage_to_trama_damage(laorder, ap_damage)
+	laorder = laorder or 1
+	ap_damage = ap_damage or 0
+	return (ap_damage/self:akiko_id_ma_armorplate_value(laorder, "trama_damage")) or 0
+end
+
+function PlayerManager:akiko_addto_trama_damage(laorder, laaddition)
+	laorder = laorder or 1
+	laaddition = laaddition or 0
+	self.akiko_tramadamage_ap[laorder] = laaddition ~= 0 and math.clamp(math.floor(self.akiko_tramadamage_ap[laorder] + (laaddition)),0,100) or self.akiko_tramadamage_ap[laorder]
+end
+
+function PlayerManager:akiko_force_trama_damage_to(laorder, forcesetval)
+	laorder = laorder or 1
+	forcesetval = forcesetval or self.akiko_tramadamage_ap[laorder] or 0
+	self.akiko_tramadamage_ap[laorder] = forcesetval ~= self.akiko_tramadamage_ap[laorder] and forcesetval or self.akiko_tramadamage_ap[laorder]
+end
+
+--Armor Plate Carriers Functions
+function PlayerManager:akiko_id_ma_armorplatecarrier() -- Recommended to not use this unless u know what to do...
+	if managers.player:has_category_upgrade("player","PLACEHOLDERUWU") then
+		return "PLACEHOLDERUWU"
+	else
+		return "akiko_ma_default_plate_carrier"
+	end
+end
+
+function PlayerManager:akiko_id_ma_armorplatecarrier_value(value_required)
+	value_required = tostring(value_required) or "mydudefuckingforgot"
+	local akikomaarmorplatecarrierdefault = self:upgrade_value("player", "akiko_ma_default_plate")[1] or {}
+	local akikoplatecarrierid = self:akiko_id_ma_armorplatecarrier()
+	return akikoplatecarrierid ~= "akiko_ma_default_plate_carrier" and self:upgrade_value("player", akikoplatecarrierid) and self:upgrade_value("player", akikoplatecarrierid)[value_required] or akikomaarmorplatecarrierdefault[value_required] or 0
+end
+
+--Armor Plates Functions
+function PlayerManager:akiko_id_ma_armorplate(laorder) -- Recommended to not use this unless u know what to do...
+	laorder = laorder or 1
+	if managers.player:has_category_upgrade("player","akiko_ceramic_imp_plate_" .. laorder) then
+		return "akiko_ceramic_imp_plate_" .. laorder
+	else
+		return "akiko_ma_default_armor_plates"
+	end
+end
+
+function PlayerManager:akiko_id_ma_armorplate_value(laorder, value_required)
+	laorder = laorder or 1
+	value_required = tostring(value_required) or "mydudefuckingforgot"
+	local akikomaarmorplatedefault = self:upgrade_value("player", "akiko_ma_default_plate")[2] or {}
+	local akikoplateid = self:akiko_id_ma_armorplate(laorder)
+	return akikoplateid ~= "akiko_ma_default_armor_plates" and self:upgrade_value("player", akikoplateid) and self:upgrade_value("player", akikoplateid)[value_required] or akikomaarmorplatedefault[value_required] or 0
+end
+
+function PlayerManager:body_armor_value(category, override_value, default) -- find out why this breaks armor functionality
+	if self:has_category_upgrade("player", "akiko_ma_default_plate") then
+		local akikoarmorplatedynamicstat = {
+			"damage_shake",
+			"concealment",
+			"dodge",
+			"movement",
+			"stamina",
+		}
+		local akikoiddynamicstat4ap = table.contains(akikoarmorplatedynamicstat, category) -- stat undo when armor plate breaks
+		
+		local akikoadditionalvalue = category == "armor" and -(tweak_data.player.damage.ARMOR_INIT) -- undoes player armor integer
+		or 0 --default value
+		
+		local akikoclampmin = category == "damage_shake" and 0
+		or -math.huge --default value
+		
+		local akikoclampmax = category == "damage_shake" and 1 
+		or math.huge --default value
+		
+		local akikomamaxplatesallowed = 4 --temp value :3
+		
+		self.akiko_ma_stat_modify = self:akiko_id_ma_armorplatecarrier_value(category)
+		
+		for i=1,akikomamaxplatesallowed,1 do
+			local akikodeterminemodifyvalue = self:akiko_id_ma_armorplate_value(i, category)
+			self.akiko_ma_stat_modify = akikodeterminemodifyvalue ~= 0 and self.akiko_ma_stat_modify + akikodeterminemodifyvalue or self.akiko_ma_stat_modify
+		end
+		local akikototalvalues = akikoadditionalvalue ~= 0 and self.akiko_ma_stat_modify + akikoadditionalvalue or self.akiko_ma_stat_modify
+		return (akikoclampmin ~= -math.huge or akikoclampmax ~= math.huge) and math.clamp(akikototalvalues, akikoclampmin, akikoclampmax) or akikototalvalues
+	end
+	
+	--Vanilla Code Below
+	local armor_data = tweak_data.blackmarket.armors[managers.blackmarket:equipped_armor(true, true)]
+
+	return self:upgrade_value_by_level("player", "body_armor", category, {})[override_value or armor_data.upgrade_level] or default or 0
+end
+
+function PlayerManager:akiko_tellmetramadamage()
+	managers.hud:show_hint( { text = "Trama Damage of Armor Plates is.. 1st:" .. self.akiko_tramadamage_ap[1] .. "% 2nd:" .. self.akiko_tramadamage_ap[2] .. "% 3rd:" .. self.akiko_tramadamage_ap[3] .. "% 4th:" .. self.akiko_tramadamage_ap[4] .. "%" } )
+end
+function PlayerManager:_attempt_adaptive_plate()
+	local managers = _G.managers
+	local player = self:local_player()
+	local damage_ext = player:character_damage()
+	
+	if self:has_category_upgrade("player","akiko_ma_default_plate") then
+		--Requires Double Click to begin (Single Click tells Trama Damage)
+		
+		if self:has_inactivate_temporary_upgrade("temporary", "akiko_apbag_doubleclick") then
+			self:activate_temporary_upgrade("temporary", "akiko_apbag_doubleclick")
+			--[[
+			if managers.chat then
+				--figure out different method maybe
+				managers.chat:send_message(ChatManager.GAME, "Trama Damage List", "Trama Damage of 1st Armor Plate is " .. self.akiko_tramadamage_ap[1] .. "%")
+				managers.chat:send_message(ChatManager.GAME, "Trama Damage List", "Trama Damage of 2nd Armor Plate is " .. self.akiko_tramadamage_ap[2] .. "%")
+				managers.chat:send_message(ChatManager.GAME, "Trama Damage List", "Trama Damage of 3rd Armor Plate is " .. self.akiko_tramadamage_ap[3] .. "%")
+				managers.chat:send_message(ChatManager.GAME, "Trama Damage List", "Trama Damage of 4th Armor Plate is " .. self.akiko_tramadamage_ap[4] .. "%")
+			end
+			]]
+			self:akiko_tellmetramadamage()
+			return false
+		else
+			self:deactivate_temporary_upgrade("temporary", "akiko_apbag_doubleclick")
+		end
+		
+		--[[
+		if self:has_activate_temporary_upgrade("temporary", "adaptive_plate_base") then
+			return false
+		end
+		]]
+		
+		--Replace a Broken Armor Plate with New One
+		local stages = damage_ext:get_adaptive_plate_stage_count()
+		local max_armor = damage_ext:_max_armor()
+		local cur_armor = damage_ext:get_real_armor()
+		local armor_step = max_armor/stages
+		
+		if managers.chat then
+			managers.chat:send_message(ChatManager.GAME, "Stupid Crap", "Your max armor " .. max_armor)
+			managers.chat:send_message(ChatManager.GAME, "Stupid Crap", "Your current armor " .. cur_armor)
+			managers.chat:send_message(ChatManager.GAME, "Stupid Crap", "Your divided by " .. stages)
+			managers.chat:send_message(ChatManager.GAME, "Stupid Crap", "Your divided armor " .. armor_step)
+			managers.chat:send_message(ChatManager.GAME, "Stupid Crap", "The current armor stage " .. self.adaptive_plate_stage)
+		end
+		
+		if self.adaptive_plate_stage == 0 or cur_armor >= max_armor then
+			return false
+		end
+		
+		self.adaptive_plate_stage = math.clamp(self.adaptive_plate_stage - 1, 0, stages)
+		if self.adaptive_plate_stage == 0 then
+			damage_ext:set_armor(max_armor)
+		else
+			damage_ext:set_armor(math.clamp(cur_armor + armor_step, 0, max_armor))
+		end
+		--[[
+		self.adaptive_plate_stage = 0
+		damage_ext:set_armor(damage_ext:_max_armor())
+		]]
+		
+		local duration = self:upgrade_value("temporary", "adaptive_plate_base")[2]
+		local now = managers.game_play_central:get_heist_timer()
+		
+		managers.network:session():send_to_peers("sync_ability_hud", now + duration, duration)
+		self:activate_temporary_upgrade("temporary", "adaptive_plate_base")
+		
+		if self:has_inactivate_temporary_upgrade("temporary", "adaptive_plate_stage_0") then
+			self:activate_temporary_upgrade("temporary", "adaptive_plate_stage_0")
+			damage_ext._can_take_dmg_timer = self:temporary_upgrade_value("temporary", "adaptive_plate_stage_0")
+		end
+		
+		local function speed_up_on_kill()
+			managers.player:speed_up_grenade_cooldown(self:upgrade_value("temporary", "adaptive_plate_base")[1])
+		end
+		
+		self:register_message(Message.OnEnemyKilled, "speed_up_adaptive_plate", speed_up_on_kill)
+		
+		return true
+	end
+	
+	return false
+end
+
+--[[
+local og_attempt_ability = PlayerManager.attempt_ability
+function PlayerManager:attempt_ability(ability, ...)
+	if ability == "adaptive_plate" then
+		if not self:player_unit() then
+			return false
+		end
+
+		local local_peer_id = managers.network:session():local_peer():id()
+		local has_no_grenades = self:get_grenade_amount(local_peer_id) == 0
+		local is_downed = game_state_machine:verify_game_state(GameStateFilters.downed)
+		local swan_song_active = managers.player:has_activate_temporary_upgrade("temporary", "berserker_damage_multiplier")
+		is_downed = is_downed and not self:has_category_upgrade("player", "activate_ability_downed")
+
+		if is_downed or swan_song_active then
+			return false
+		elseif has_no_grenades then
+			self:akiko_tellmetramadamage()
+			return false
+		end
+
+		local attempt_func = self["_attempt_" .. ability]
+
+		if attempt_func and not attempt_func(self) then
+			return false
+		end
+
+		local tweak = tweak_data.blackmarket.projectiles[ability]
+
+		if tweak and tweak.sounds and tweak.sounds.activate then
+			self:player_unit():sound():play(tweak.sounds.activate)
+		end
+
+		self:add_grenade_amount(-1)
+		self._message_system:notify("ability_activated", nil, ability)
+
+		return true
+	else
+		og_attempt_ability(self, ability, ...)
+	end
+end
+]]
+
+--Offyerrocker Functions:
+
+--Liberator Perk Deck (+ SpireWitch)
+function PlayerManager:_attempt_tachi()
+	if self:has_category_upgrade("player","tachi_base") then 
+		
+		if self._coroutine_mgr:is_running("tachi_syringe") then
+			return false
+		end
+
+		local player = self:local_player()
+		if self:has_category_upgrade("player","tachi_restore_health") then
+			local dmg_ext = player:character_damage()
+			local restore_health_amount = self:upgrade_value("player","tachi_restore_health",0)
+			dmg_ext:restore_health(restore_health_amount,true,false)
+		end
+		if self:has_category_upgrade("player","tachi_restore_stamina") then
+			local mov_ext = player:movement()
+			local restore_stamina_amount = self:upgrade_value("player","tachi_restore_stamina",0)
+			mov_ext:add_stamina(restore_stamina_amount)
+		end
+		
+		self:add_coroutine("tachi_syringe", PlayerAction.Tachi)
+		
+		return true
+	end
+	return false
+end
+
+--Global Functions:
+	--Fixes networking issues (to not crash other players)
+	--Used in Offyerrocker's Liberator Perk Deck
+	--Plus Armor Plate Perk (Akiko and og. Hacker_lyx)
+
+local function set_hud_item_amount(index, amount)
+	if #amount > 1 then
+		managers.hud:set_item_amount_from_string(index, make_double_hud_string(amount[1], amount[2]), amount)
+	else
+		managers.hud:set_item_amount(index, amount[1])
+	end
+end
+
+function PlayerManager:update_grenades_to_peer(peer)
+	local peer_id = managers.network:session():local_peer():id()
+
+	if self._global.synced_grenades[peer_id] then
+		local grenade = self._global.synced_grenades[peer_id].grenade
+		--This appears to be the only change
+		local tweak = tweak_data.blackmarket.projectiles[grenade]
+		if tweak.based_on then 
+			grenade = tweak.based_on
+		end
+		--End of change
+		local amount = self._global.synced_grenades[peer_id].amount
+
+		peer:send_queued_sync("sync_grenades", grenade, Application:digest_value(amount, false), 0)
+	end
+end	
+
+function PlayerManager:update_grenades_amount_to_peers(grenade, amount, register_peer_id)
+	local peer_id = managers.network:session():local_peer():id()
+	
+	--This appears to be the only change
+		local tweak = tweak_data.blackmarket.projectiles[grenade]
+		if tweak.based_on then 
+			grenade = tweak.based_on
+		end
+	--End of change
+	
+	managers.network:session():send_to_peers_synched("sync_grenades", grenade, amount, register_peer_id or 0)
+	self:set_synced_grenades(peer_id, grenade, amount, register_peer_id)
+end	
+
+--fixes the synced (spoofed) grenade data being used for the actual data- specifically, cooldown
+function PlayerManager:add_grenade_amount(amount, sync)
+	local peer_id = managers.network:session():local_peer():id()
+	local grenade = managers.blackmarket:equipped_grenade() --self._global.synced_grenades[peer_id].grenade
+	local tweak = tweak_data.blackmarket.projectiles[grenade]
+	local max_amount = self:get_max_grenades_by_peer_id(peer_id)
+	local icon = tweak.icon
+	local previous_amount = self._global.synced_grenades[peer_id].amount
+
+	if amount > 0 and tweak.base_cooldown then
+		managers.hud:animate_grenade_flash(HUDManager.PLAYER_PANEL)
+	end
+
+	amount = math.min(Application:digest_value(previous_amount, false) + amount, max_amount)
+
+	if amount < max_amount and tweak.base_cooldown then
+		self:replenish_grenades(tweak.base_cooldown)
+	end
+
+	managers.hud:set_teammate_grenades_amount(HUDManager.PLAYER_PANEL, {
+		icon = icon,
+		amount = amount
+	})
+	self:update_grenades_amount_to_peers(grenade, amount, sync and peer_id)
 end

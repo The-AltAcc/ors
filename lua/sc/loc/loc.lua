@@ -5808,7 +5808,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Bullseye--
 				["menu_prison_wife_beta_sc"] = "Bullseye",
-				["menu_prison_wife_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nHeadshots regenerate #{skill_color}#$skill_value_b1## armor; has a cooldown of #{important_1}#$skill_value_b2## seconds.\n\nLethal headshots reduce the cooldown by #{skill_color}#$skill_value_b3## seconds. $anarc_disable\n\nACE: #{owned}#$pro##\nHeadshots regenerate an additional #{skill_color}#$skill_value_p1## armor.\n\nThe cooldown reduction is increased by an additional #{skill_color}#$skill_value_p2## seconds. $anarc_disable\n\n",
+				["menu_prison_wife_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nHeadshots regenerate #{skill_color}#$skill_value_b1## armor; has a cooldown of #{important_1}#$skill_value_b2## seconds.\n\nLethal headshots reduce the cooldown by #{skill_color}#$skill_value_b3## seconds. $anarc_disable$akiko_ma_disable\n\nACE: #{owned}#$pro##\nHeadshots regenerate an additional #{skill_color}#$skill_value_p1## armor.\n\nThe cooldown reduction is increased by an additional #{skill_color}#$skill_value_p2## seconds. $anarc_disable$akiko_ma_disable\n\n",
 
 				--Iron Man
 				["menu_juggernaut_beta_sc"] = "Iron Man",
@@ -5925,7 +5925,7 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Skills_Eng", function(
 
 				--Sixth Sense--
 				["menu_chameleon_beta_sc"] = "Sixth Sense",
-				["menu_chameleon_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou gain the ability to #{skill_color}#automatically mark## enemies within a #{skill_color}#10## meter radius around you after standing still for #{skill_color}#3.5## seconds.\n\nACE: #{owned}#$pro##\nYou #{skill_color}#gain access to all insider assets.##",
+				["menu_chameleon_beta_desc_sc"] = "BASIC: #{owned}#$basic##\nYou gain the ability to #{skill_color}#automatically mark## enemies within a #{skill_color}#10## meter radius around you after standing still for #{skill_color}#3.5## seconds.\n\nACE: #{owned}#$pro##\nYou #{skill_color}#gain access to all insider assets and a set of night vision goggles to use during heists.##\n\n#{risk}#NOTE: Activate Night Vision by holding down the Fire Mode button.##",
 
 				--ECM Overdrive--
 				["menu_cleaner_beta_sc"] = "ECM Overdrive",
@@ -6450,19 +6450,79 @@ Hooks:Add("LocalizationManagerPostInit", "SC_Localization_Perk_Decks_Eng", funct
 		["menu_st_spec_24"] = "Tabula Rasa",
 		["menu_st_spec_25"] = "Innatae",
 		--MOD PERK DECKS
+			--Akiko Armor Plate Perk Deck (og. Hacker_lyx)
+				--Shared Perks (UPDATE THESE LOC EVERYTIME SHARED PERKS ARE CHANGED)
+				["menu_deckall_2_desc_ma"] = "Increases your headshot damage by #{skill_color}#$perk_value_1.##\n\nYou do #{skill_color}#$perk_value_2## more damage.\n\n#{risk}#NOTE: Damage increase does not apply to## #{important_1}#Throwables or Launchers.##\n\nSelect the armor plate type for the first outermost slot in your carrier.",
+				["menu_deckall_4_desc_ma"] = "You gain #{skill_color}#$perk_value_1## mobility.\n\nWhen wearing armor, your movement speed is #{skill_color}#$perk_value_2## less affected.\n\nYou gain #{skill_color}#$perk_value_3## more experience when you complete days and jobs.\n\n#{risk}#For non-Pro Jobs,## you reload your weapons #{skill_color}#$perk_value_4## faster.\n\nYou do #{skill_color}#$perk_value_5## more damage.\n\n#{risk}#NOTE: Damage increase does not apply to## #{important_1}#Throwables or Launchers.##\n\nSelect the armor plate type for the second slot in your carrier.",
+				["menu_deckall_6_desc_ma"] = "Unlocks the #{skill_color}#Throwable Case## equipment for you and your crew to use. The Throwable Case can be used to replenish throwables during a heist.\n\n#{risk}#For non-Pro Jobs,## you pick up #{skill_color}#$perk_value_1## more ammo; effect is doubled for offline heists.\n\nYou do #{skill_color}#$perk_value_2## more damage.\n\n#{risk}#NOTE: Damage increase does not apply to## #{important_1}#Throwables or Launchers.##\n\nSelect the armor plate type for the third slot in your carrier.",
+				["menu_deckall_8_desc_ma"] = "Increases your Doctor Bag interaction speed by #{skill_color}#$perk_value_1.##\n\nYou do #{skill_color}#$perk_value_2## more damage.\n\n#{risk}#NOTE: Damage increase does not apply to## #{important_1}#Throwables or Launchers.##\n\nSelect the armor plate type for the last innermost slot in your carrier.",
+				["menu_akiko_ma_disable"] = "#{important_1}#(This effect is disabled by Modular Aegis)##",
+				
+				["bm_adaptive_plate"] = "Armor Plate Bag",
+				["bm_adaptive_plate_desc"] = "Activating the Armor Plate Bag will replace the plates in your carrier.\nCompletely restoring armor and giving you 2 seconds of invulnerability\nHeavier Armor will reduce the amount of charges the Plate bag has.",
+				["bm_menu_skill_locked_adaptive_plate"] = "Requires the Modular Aegis Perk Deck Equipped",
+
+				["menu_st_spec_adaptive"] = "Modular Aegis",
+				["menu_st_spec_adaptive_desc"] = "The Modular Aegis brings cutting-edge armor technology to the fight. Designed for heisters who thrive in the thick of combat, this allows them to swap out armor plates on the fly, ensuring they stay protected through the fiercest firefights. With quick reflexes and strategic timing, they are a powerful shield that adapts to the chaos.",
+
+				["menu_deck_adaptive_1"] = "Armor Plate 1",
+				["menu_deck_adaptive_1_short"] = "Unlocks the Armor Plate Bag as a Throwable.\n\nActivating the Armor Plate Bag will replace the plates in your carrier.\nCompletely restoring armor and giving you ##2## seconds of invulnerability.\n\nHeavier Armor will reduce the amount of charges the Plate bag has.\nEach Charge has a ##60## second cooldown.\nKills will reduce the cooldown by ##6## seconds.",
+				["menu_deck_adaptive_1_desc"] = "Unlocks the Armor Plate Bag as a Throwable.\n\nActivating the Armor Plate Bag will replace the plates in your carrier.\nCompletely restoring armor and giving you ##2## seconds of invulnerability.\n\nHeavier Armor will reduce the amount of charges the Plate bag has.\nEach Charge has a ##60## second cooldown.\nKills will reduce the cooldown by ##6## seconds.",
+
+				["menu_deck_adaptive_3"] = "Armor Plate 2",
+				["menu_deck_adaptive_3_short"] = "You gain ##10%## more armor.",
+				["menu_deck_adaptive_3_desc"] = "You gain ##10%## more armor.",
+
+				["menu_deck_adaptive_5"] = "Armor Plate 3",
+				["menu_deck_adaptive_5_short"] = "Segments your armor into ##1##/##2##/##3##/##4## 'plates' depending on equipped armor.\n\nWhen a plate breaks you gain ##1## second of invulnerability.\nAfter plates break, they can only be regenerated by using the Plate Bag.",
+				["menu_deck_adaptive_5_desc"] = "Segments your armor into ##1##/##2##/##3##/##4## 'plates' depending on equipped armor.\n\nWhen a plate breaks you gain ##1## second of invulnerability.\nAfter plates break, they can only be regenerated by using the Plate Bag.",
+
+				["menu_deck_adaptive_7"] = "Armor Plate 4",
+				["menu_deck_adaptive_7_short"] = "You gain ##20%## more armor.",
+				["menu_deck_adaptive_7_desc"] = "You gain ##20%## more armor.",
+
+				["menu_deck_adaptive_9"] = "Type of Armor Plate",
+				["menu_deck_adaptive_9_short"] = "Choose the type of armor plate used in the armor carrier.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
+				["menu_deck_adaptive_9_desc"] = "Choose the type of armor plate used in the armor carrier.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
+				
+				["menu_deck_adaptive_alt1_9"] = "GenSec's Resistant Plate",
+				["menu_deck_adaptive_alt2_9"] = "White Mesa's Adaptive Plate",
+				
+				["menu_deck_adaptive_alt4_9"] = "GenSec's Titan Resistant Plate",
+				
+				["menu_akiko_ceramic_imp_plate"] = "GenSec's Ceramic Impact Plate",
+				["menu_akiko_ceramic_imp_plate_desc"] = "GenSec's Ceramic Impact Plate",
+	
 			--OFFYERROCKER'S MERCENARY PERK DECK
+				["menu_deck_kmerc_title"] = "Mercenary",
+				["menu_deck_kmerc_desc"] = "The expert Mercenary has trained in a hundred thousand ways in staying alive and a hundred thousand more in making the enemy dead instead. In even the heaviest lead-fights, a Mercenary has the grit, the perseverance, and the sheer strength of will to carry on. Survival is rule number one; when all is said and done, and the dust has settled, what's a million dollar's pay to a dead man?",
+				["menu_deck_kmerc_1"] = "Scar Tissue",
+				["menu_deck_kmerc_3"] = "Keep 'Em Coming!",
+				["menu_deck_kmerc_5"] = "Walk It Off",
+				["menu_deck_kmerc_7"] = "Salve Lining",
+				["menu_deck_kmerc_9"] = "Strongside",
 				["menu_deck_kmerc_1_desc_sc"] = "Take greatly reduced damage from heavy hits to your health so that no single attack can kill you.\n\nYou gain ##5%## more health.",
 				["menu_deck_kmerc_3_desc_sc"] = "You gain ##1%## reload speed and ##2%## weapon swap speed for every ##4## points armor you have.\n\nYou gain ##5%## more armor.",
 				["menu_deck_kmerc_5_desc_sc"] = "When your health would become ##0##, it becomes ##1## instead and you gain ##2## seconds of invulnerability.\nYou cannot sprint while under the effects of this invulnerability.\nThis effect cannot occur again until you are restored to full health.\n\nYou gain an additional ##5%## more health.",
 				["menu_deck_kmerc_7_desc_sc"] = "After having armor for at least ##2## seconds, heal health equal to ##1%## of your max armor every ##5## seconds so long as you have armor.",
-				["menu_deck_kmerc_9_desc_sc"] = "Whenever you take damage to your health that leaves you at ##30%## health or less, regain ##50%## of that damage as armor.\nThis cannot occur more than once every ##1## second or from the same hit that triggers Walk It Off's (Card 5) invulnerability.",
+				["menu_deck_kmerc_9_desc_sc"] = "Whenever you take damage to your health that leaves you at ##30%## health or less, regain ##50%## of that damage as armor.\nThis cannot occur more than once every ##1## second or from the same hit that triggers Walk It Off's (Card 5) invulnerability.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##",
 
 			--OFFYERROCKER'S LIBERATOR PERK DECK
+				["bm_menu_skill_locked_tachi"] = "Requires the Liberator Perk Deck Equipped",
+				["bm_tachi"] = "Tachi-2B Survival Syringe",
+				["bm_tachi_desc"] = "These syringes contain a mixture of potent medicine and microscopic robots. When used, these robots enter the body and rapidly heal any damaged tissue around their insertion point. This specific variant of the syringes also give the user a boost of adrenaline - perfect for finding a comfortable spot to let the robots do their job.",
+				["menu_deck_liberator_title"] = "Liberator",
+				["menu_deck_liberator_desc"] = "The Liberator has a long history of 'reclaiming' government and corporate belongings, typically in the way of digital documents. With little experience in groundwork, the Liberator occasionally needs to stop and take a breather before getting back into the fight against whatever tyrants sit at the top.",
+				["menu_deck_liberator_1"] = "Survival Shortcut",
+				["menu_deck_liberator_3"] = "Preemptive Interference",
+				["menu_deck_liberator_5"] = "Non-empirical",
+				["menu_deck_liberator_7"] = "Trouble Entity",
+				["menu_deck_liberator_9"] = "Emergent Power",
 				["menu_deck_liberator_1_desc_sc"] = "Unlocks the ##Survival Syringe## for use in place of a throwable. Using the Survival Syringe will immediately restore ##15## stamina and restore ##0.5## points of health every second for ##6## seconds or until the player takes health damage.\nThe Survival Syringe has ##1## charge with a cooldown of ##30## seconds; each kill you perform will reduce the cooldown by ##1## second.",
 				["menu_deck_liberator_3_desc_sc"] = "The health regen from the Survival Syringe now lasts for an additional ##2## seconds.\n\nWhen health regen from Survival Syringe is canceled, gain ##10%## damage resistance for the remaining time.",
 				["menu_deck_liberator_5_desc_sc"] = "The Survival Syringe restores an additional ##15## stamina and restores an additional ##0.5## points of health every second.\n\nYour dodge is increased by ##5## points.",
 				["menu_deck_liberator_7_desc_sc"] = "Your health is increased by ##10%##.\n\nThe health regen from Survival Syringe now lasts for an additional ##2## seconds.",
-				["menu_deck_liberator_9_desc_sc"] = "The Survival Syringe now restores an additional ##1## point of health every second."
+				["menu_deck_liberator_9_desc_sc"] = "The Survival Syringe now restores an additional ##1## point of health every second.\n\nDeck Completion Bonus: Your chance of getting a higher quality item during a PAYDAY is increased by ##10%.##"
 
 	})
 end)

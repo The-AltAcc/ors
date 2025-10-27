@@ -1873,7 +1873,10 @@ function BlackMarketTweakData:_init_projectiles(tweak_data)
 		--Other mods
 		"tachi",
 		"nerf_dart_standard",
-		"nerf_dart_poison"
+		"nerf_dart_poison",
+		
+		--Akiko Armor Plate Perk Deck (og. Hacker_lyx)
+		"adaptive_plate"
 	}
 
 	--Throwables--
@@ -2081,7 +2084,44 @@ function BlackMarketTweakData:_init_projectiles(tweak_data)
 		time_cheat = 0,
 		adjust_z = 0
 	}
-
+	
+	--Akiko Armor Plate Perk Deck (og. Hacker_lyx) --Throwable Tweakdata (Registered Above)
+	self.projectiles.adaptive_plate = {
+		name_id = "bm_adaptive_plate",
+		desc_id = "bm_adaptive_plate_desc",
+		custom = true,
+		ignore_statistics = true,
+		based_on = "chico_injector",
+		--icon = "adaptive_plate",
+		icon = "equipment_armor_kit",
+		ability = "adaptive_plate",
+		texture_bundle_folder = "adaptive_plate",
+		base_cooldown = 30,
+		max_amount = 1,
+		sounds = {
+			activate = "perkdeck_activate",
+			cooldown = "perkdeck_cooldown_over"
+		}
+	}
+	
+	--Offyerrocker Liberator Perk Deck (+ SpireWitch) - Thorwable Tweakdata (Reg Above)
+	self.projectiles.tachi = {
+		name_id = "bm_tachi",
+		desc_id = "bm_tachi_desc",
+		ability = "tachi",
+		custom = true,
+		ignore_statistics = true,
+		based_on = "chico_injector",
+		texture_bundle_folder = "liberator",
+		icon = "chico_injector",
+		max_amount = 1,
+		base_cooldown = 30,
+		sounds = {
+			activate = "perkdeck_activate",
+			cooldown = "perkdeck_cooldown_over"
+		}
+	}
+	
 	self.projectiles.rocket_ray_frag.physic_effect = nil --Idstring("physic_effects/molotov_throw")
 	self.projectiles.rocket_frag.physic_effect = nil --Idstring("physic_effects/molotov_throw")
 
@@ -6868,7 +6908,21 @@ Hooks:PostHook(BlackMarketTweakData, "init", "CustomMelee", function(self, tweak
 			var1 = {"right", 0.2}
 		}
 	end
-
+	
+	--Akiko Edits :3
+	if self.melee_weapons.tazergun then 
+		self.melee_weapons.tazergun.stats.min_damage = 1.5
+		self.melee_weapons.tazergun.stats.max_damage = 1.5
+		self.melee_weapons.tazergun.stats.range = 1200
+		--[[
+		self.melee_weapons.tazergun.stats.min_damage = 1
+		self.melee_weapons.tazergun.stats.max_damage = 1
+		self.melee_weapons.tazergun.stats.min_damage_effect = 1.0
+		self.melee_weapons.tazergun.stats.max_damage_effect = 1.0
+		--self.melee_weapons.tazergun.stats.charge_time = 1.25
+		self.melee_weapons.tazergun.stats.range = 1200
+		]]
+	end
 
 
 	local blanket_speed_mult = 1.1

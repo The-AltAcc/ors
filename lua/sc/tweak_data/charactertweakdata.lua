@@ -58,6 +58,24 @@ function CharacterTweakData:init(tweak_data, presets)
 	self:_init_omnia_lpf(presets)
 	self:_init_tank_biker(presets)
 	self:_init_zombie(presets)
+	
+	--Akiko Extras Charactertweaks (if attempt to index field '_char_tweak' then u forgot to put function here)
+	self:_init_xof_swat(presets)
+	self:_init_xof_markman(presets)
+	self:_init_xof_heavy_swat(presets)
+	self:_init_xof_shield(presets)
+	self:_init_xof_pigglet(presets)
+	self:_init_xof_volunteer(presets)
+	self:_init_xof_spooc(presets)
+	self:_init_gign_doc(presets)
+	self:_init_irs_mpv(presets)
+	self:_init_us_warthog(presets)
+	self:_init_tank_taser(presets)
+	self:_init_shield_dozers(presets)
+	self:_init_zombie_test(presets)
+	self:_init_ng_medic(presets)
+	
+	--Rest of Res Stuff
 	self:_process_weapon_usage_table()
 	
 	--Dozer Armor Multiplier, lower means more EHP
@@ -4083,6 +4101,279 @@ function CharacterTweakData:_init_zombie(presets)
 	self.zombie_light = deep_clone(self.swat)
 	table.insert(self._enemy_list, "zombie_light")	
 
+end
+
+--Akiko Presets Char Function:
+function CharacterTweakData:_init_xof_pigglet(presets)
+	--This is now flamethrower xof unit
+	self.xof_pigglet = deep_clone(self.city_swat_titan)
+	self.xof_pigglet.special_deaths = nil
+	self.xof_pigglet.dodge = presets.dodge.athletic
+	self.xof_pigglet.move_speed = presets.move_speed.very_fast_plus
+	--self.xof_pigglet.move_speed = presets.move_speed.very_fast
+	self.xof_pigglet.yellow_blood = false
+	self.xof_pigglet.HEALTH_INIT = 12.5
+	self.xof_pigglet.headshot_dmg_mul = 2
+	self.xof_pigglet.damage.bullet_damage_mul = 1
+	self.xof_pigglet.damage.explosion_damage_mul = 1
+	self.xof_pigglet.damage.tase_damage_mul = 1
+	self.xof_pigglet.custom_voicework = "hecu_dmr"
+	--self.xof_pigglet.can_throw_frag = true
+	--self.xof_pigglet.grenade_toss_chance = 0.35
+	table.insert(self._enemy_list, "xof_pigglet")
+end
+
+-- US Warthog, similar stats to Skull Dozer
+-- Slightly Nerfed PiggyDozer (Spawnable Warthog)
+--suffer in hell
+function CharacterTweakData:_init_us_warthog(presets)
+	self.us_warthog = deep_clone(self.tank_skull)
+	self.us_warthog.experience = {}
+	self.us_warthog.HEALTH_INIT = 475
+	self.us_warthog.move_speed = presets.move_speed.slow_plus
+	self.us_warthog.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts_tankblack
+	self.us_warthog.speech_prefix_p1 = "fuckingpig"
+	self.us_warthog.speech_prefix_p2 = nil
+	self.us_warthog.speech_prefix_count = nil
+	self.us_warthog.custom_voicework = "piggy_dozer"
+	self.us_warthog.can_throw_molotov = true
+	self.us_warthog.grenade_toss_chance = 0.4
+	--self.us_warthog.grenade_cooldown = 20
+	
+	table.insert(self._enemy_list, "us_warthog")
+	
+	self.norm_warthog = deep_clone(self.tank)
+	self.norm_warthog.experience = {}
+	self.norm_warthog.headshot_dmg_mul = 13.25
+	self.norm_warthog.HEALTH_INIT = 375
+	self.norm_warthog.speech_prefix_p1 = "fuckingpig"
+	self.norm_warthog.speech_prefix_p2 = nil
+	self.norm_warthog.speech_prefix_count = nil
+	self.norm_warthog.custom_voicework = "piggy_dozer"
+	self.norm_warthog.move_speed = presets.move_speed.slow_plus
+	self.norm_warthog.damage.hurt_severity = presets.hurt_severities.only_explosion_hurts_tankblack
+	self.norm_warthog.can_throw_molotov = true
+	self.norm_warthog.grenade_toss_chance = 0.25
+	--self.norm_warthog.grenade_cooldown = 30
+
+	table.insert(self._enemy_list, "norm_warthog")
+end
+
+function CharacterTweakData:_init_tank_taser(presets)
+	self.tank_taser = deep_clone(self.tank)
+	self.tank_taser.tags = {"law", "tank", "special", "taser"}
+	self.tank_taser.experience = {}
+	self.tank_taser.weapon = deep_clone(presets.weapon.normal)
+	self.tank_taser.weapon.is_rifle.tase_distance = 1000
+	self.tank_taser.weapon.is_rifle.aim_delay_tase = {0.85, 0.85}
+	self.tank_taser.weapon.is_rifle.tase_sphere_cast_radius = 30
+	self.tank_taser.shock_damage = nil --Taser Mechanic doesnt even use per unit shock_damage (taser.shock_damage)
+	
+	table.insert(self._enemy_list, "tank_taser")
+end
+
+function CharacterTweakData:_init_shield_dozers(presets)
+	self.tank_shield_titan_shielded = deep_clone(self.tank_titan)
+	self.tank_shield_titan_shielded.tags = {"law", "tank", "special", "tank_titan", "customvo", "shield", "shield_titan"}
+	self.tank_shield_titan_shielded.experience = {}
+	self.tank_shield_titan_shielded.damage.explosion_damage_mul = 0.25
+	self.tank_shield_titan_shielded.damage.rocket_damage_mul = 0.25
+	self.tank_shield_titan_shielded.damage.bullet_damage_mul = 0.25
+	self.tank_shield_titan_shielded.damage.fire_damage_mul = 0.25
+	self.tank_shield_titan_shielded.damage.tase_damage_mul = 0.25
+	self.tank_shield_titan_shielded.damage.dot_damage_mul = 0.25
+	self.tank_shield_titan_shielded.damage.fire_pool_damage_mul = 0.25
+	self.tank_shield_titan_shielded.melee_push_multiplier = 4 --he punches you a lot harder now
+	self.tank_shield_titan_shielded.use_animation_on_fire_damage = false
+	self.tank_shield_titan_shielded.surrender = nil
+	self.tank_shield_titan_shielded.is_special = true
+	self.tank_shield_titan_shielded.rotation_speed = 0.75
+	--self.tank_shield_titan_shielded.no_asu = true
+	self.tank_shield_titan_shielded.allowed_poses = {crouch = true}
+	self.tank_shield_titan_shielded.crouch_move = true
+	self.tank_shield_titan_shielded.immune_to_concussion = true
+	self.tank_shield_titan_shielded.always_face_enemy = true
+	self.tank_shield_titan_shielded.no_run_start = true
+	self.tank_shield_titan_shielded.no_run_stop = true
+	self.tank_shield_titan_shielded.no_retreat = true
+	self.tank_shield_titan_shielded.no_limping = true
+	self.tank_shield_titan_shielded.no_arrest = true
+	self.tank_shield_titan_shielded.no_equip_anim = true
+	self.tank_shield_titan_shielded.wall_fwd_offset = 100
+	self.tank_shield_titan_shielded.calls_in = nil
+	self.tank_shield_titan_shielded.ignore_medic_revive_animation = true
+	self.tank_shield_titan_shielded.shooting_death = false
+	self.tank_shield_titan_shielded.damage.hurt_severity = presets.hurt_severities.no_hurts
+	self.tank_shield_titan_shielded.damage.shield_knocked = false
+	self.tank_shield_titan_shielded.damage.immune_to_knockback = true
+	self.tank_shield_titan_shielded.immune_to_knock_down = true
+	self.tank_shield_titan_shielded.HEALTH_INIT = 600
+	self.tank_shield_titan_shielded.headshot_dmg_mul = 1.0
+	
+	table.insert(self._enemy_list, "tank_shield_titan_shielded")
+	
+	self.tank_shield_titan = deep_clone(self.tank_titan)
+	self.tank_shield_titan.experience = {}
+	self.tank_shield_titan.melee_push_multiplier = 1
+	self.tank_shield_titan.HEALTH_INIT = 600
+	self.tank_shield_titan.headshot_dmg_mul = 2.5
+	self.tank_shield_titan.move_speed = presets.move_speed.normal
+
+	table.insert(self._enemy_list, "tank_shield_titan")
+end
+
+function CharacterTweakData:_init_xof_shield(presets)
+	self.xof_shield = deep_clone(self.shield)
+	self.xof_shield.special_deaths = nil
+	self.xof_shield.speech_prefix_p1 = "define me pure hate"
+	self.xof_shield.speech_prefix_p2 = nil
+	self.xof_shield.speech_prefix_count = nil
+	self.xof_shield.custom_voicework = "combine"
+	self.xof_shield.yellow_blood = false
+	self.xof_shield.weapon.is_pistol.melee_speed = enemy_melee_speed.normal
+	self.xof_shield.weapon.is_pistol.melee_dmg = enemy_melee_damage_base
+	self.xof_shield.weapon.is_pistol.melee_retry_delay = {2, 2}
+	self.xof_shield.weapon.is_pistol.melee_range = 200
+	self.xof_shield.overheal_mult = 2
+	self.xof_shield.damage.hurt_severity = self.presets.hurt_severities.no_hurts
+	self.xof_shield.damage.explosion_damage_mul = 0.7
+	table.insert(self._enemy_list, "xof_shield")
+end
+
+function CharacterTweakData:_init_xof_markman(presets)
+	self.xof_markman = deep_clone(self.heavy_swat_sniper)
+	self.xof_markman.special_deaths = nil
+	self.xof_markman.speech_prefix_p1 = "define me pure hate"
+	self.xof_markman.speech_prefix_p2 = nil
+	self.xof_markman.speech_prefix_count = nil
+	self.xof_markman.custom_voicework = "hecu_dmr"
+	self.xof_markman.yellow_blood = false
+	table.insert(self._enemy_list, "xof_markman")
+end
+
+function CharacterTweakData:_init_xof_heavy_swat(presets)
+	self.xof_heavy_swat = deep_clone(self.heavy_swat)
+	self.xof_heavy_swat.special_deaths = nil
+	self.xof_heavy_swat.speech_prefix_p1 = "define me pure hate"
+	self.xof_heavy_swat.speech_prefix_p2 = nil
+	self.xof_heavy_swat.speech_prefix_count = nil
+	self.xof_heavy_swat.custom_voicework = "hecu_elite"
+	self.xof_heavy_swat.yellow_blood = false
+	self.xof_heavy_swat.weapon = deep_clone(self.presets.weapon.good)
+	self.xof_heavy_swat.melee_weapon_dmg_multiplier = 1.5
+	self.xof_heavy_swat.dodge = deep_clone(self.presets.dodge.heavy_overkill)
+	table.insert(self._enemy_list, "xof_heavy_swat")
+end
+
+function CharacterTweakData:_init_xof_swat(presets)
+	self.xof_swat = deep_clone(self.swat)
+	self.xof_swat.special_deaths = nil
+	self.xof_swat.speech_prefix_p1 = "define me pure hate"
+	self.xof_swat.speech_prefix_p2 = nil
+	self.xof_swat.speech_prefix_count = nil
+	self.xof_swat.custom_voicework = "combine_elite"
+	self.xof_swat.yellow_blood = false
+	self.xof_swat.can_shoot_while_dodging = true
+	table.insert(self._enemy_list, "xof_swat")
+end
+
+function CharacterTweakData:_init_xof_volunteer(presets)
+	--Modify Stats Later no time now
+	self.xof_volunteer = deep_clone(self.taser)
+	self.xof_volunteer.special_deaths = nil
+	self.xof_volunteer.speech_prefix_p1 = "define me pure hate"
+	self.xof_volunteer.speech_prefix_p2 = nil
+	self.xof_volunteer.speech_prefix_count = nil
+	self.xof_volunteer.custom_voicework = "combine_elite"
+	self.xof_volunteer.yellow_blood = false
+	self.xof_volunteer.can_shoot_while_dodging = true
+	table.insert(self._enemy_list, "xof_volunteer")
+end
+
+function CharacterTweakData:_init_xof_spooc(presets)
+	self.xof_spooc = deep_clone(self.spooc)
+	self.xof_spooc.special_deaths = nil
+	self.xof_spooc.speech_prefix_p1 = "define me pure hate"
+	self.xof_spooc.speech_prefix_p2 = nil
+	self.xof_spooc.speech_prefix_count = nil
+	self.xof_spooc.custom_voicework = "combine_elite"
+	self.xof_spooc.yellow_blood = false
+	self.xof_spooc.can_shoot_while_dodging = true
+	table.insert(self._enemy_list, "xof_spooc")
+end
+
+function CharacterTweakData:_init_gign_doc(presets)
+	self.gign_doc = deep_clone(self.medic)
+	self.gign_doc.special_deaths = nil
+	self.gign_doc.HEALTH_INIT = 50
+	self.gign_doc.heal_cooldown = 6
+	self.gign_doc.headshot_dmg_mul = 5
+	self.gign_doc.move_speed = presets.move_speed.very_fast_plus
+	self.gign_doc.speech_prefix_p1 = "define me pure hate"
+	self.gign_doc.speech_prefix_p2 = nil
+	self.gign_doc.speech_prefix_count = nil
+	self.gign_doc.custom_voicework = "brit_medic"
+	self.gign_doc.dodge = self.presets.dodge.athletic_very_hard
+	--self.gign_doc.can_shoot_while_dodging = true
+	self.gign_doc.can_slide_on_suppress = true
+	--self.gign_doc.gas_on_death = true
+	self.gign_doc.dodge_with_grenade = {
+        flash = {duration = {
+            12,
+            12
+        }},
+        check = function (t, nr_grenades_used)
+            local delay_till_next_use = 1
+            local chance = 0.5
+
+            if math.random() < chance then
+                return true, t + delay_till_next_use
+            end
+
+            return false, t + delay_till_next_use
+        end
+    }
+	self.gign_doc.static_dodge_preset = true
+	table.insert(self._enemy_list, "gign_doc")
+end
+
+function CharacterTweakData:_init_irs_mpv(presets)
+	self.irs_mpu = deep_clone(self.medic)
+	self.irs_mpu.tags = {"law", "medic", "special", "taser"}
+	self.irs_mpu.experience = {}
+	self.irs_mpu.special_deaths = nil
+	self.irs_mpu.weapon = deep_clone(presets.weapon.normal)
+	self.irs_mpu.weapon.is_rifle.tase_distance = 1400
+	self.irs_mpu.weapon.is_rifle.aim_delay_tase = {0.75, 0.75}
+	self.irs_mpu.weapon.is_rifle.tase_sphere_cast_radius = 30
+	self.irs_mpu.shock_damage = nil --same deal
+	table.insert(self._enemy_list, "irs_mpu")
+end
+
+function CharacterTweakData:_init_zombie_test(presets)
+	self.zombie_test = deep_clone(self.swat)
+	self.zombie_test.special_deaths = nil
+	self.zombie_test.speech_prefix_p1 = "define me pure hate"
+	self.zombie_test.speech_prefix_p2 = nil
+	self.zombie_test.speech_prefix_count = nil
+	self.zombie_test.custom_voicework = "combine_elite"
+	self.zombie_test.yellow_blood = false
+	self.zombie_test.melee_weapon = "knife_1"
+	self.zombie_test.melee_weapon_dmg_multiplier = 2
+	self.zombie_test.can_shoot_while_dodging = true
+	self.zombie_test.move_speed = presets.move_speed.very_fast_plus
+	table.insert(self._enemy_list, "zombie_test")
+end
+
+function CharacterTweakData:_init_ng_medic(presets)
+	self.ng_medic = deep_clone(self.medic)
+	self.ng_medic.special_deaths = nil
+	self.ng_medic.speech_prefix_p1 = "define me pure hate"
+	self.ng_medic.speech_prefix_p2 = nil
+	self.ng_medic.speech_prefix_count = nil
+	self.ng_medic.custom_voicework = "zula"
+	self.ng_medic.yellow_blood = false
+	table.insert(self._enemy_list, "ng_medic")
 end
 
 function CharacterTweakData:_presets(tweak_data)
@@ -16434,6 +16725,38 @@ function CharacterTweakData:_presets(tweak_data)
 			}
 		}			
 	}
+	
+	--Akiko Groundsniper Setup
+	restoration.log_shit("SC: akiko groundsniper presets")
+	presets.weapon.normal.is_groundsniper = deep_clone(presets.weapon.normal.is_sniper)
+	presets.weapon.good.is_groundsniper = deep_clone(presets.weapon.good.is_sniper)
+	presets.weapon.expert.is_groundsniper = deep_clone(presets.weapon.expert.is_sniper)
+	presets.weapon.deathwish.is_groundsniper = deep_clone(presets.weapon.deathwish.is_sniper)
+	presets.weapon.gang_member.is_groundsniper = deep_clone(presets.weapon.gang_member.is_sniper)
+	
+	presets.weapon.normal.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.normal.is_groundsniper.focus_delay = 5
+	presets.weapon.good.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.good.is_groundsniper.focus_delay = 5
+	presets.weapon.expert.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.expert.is_groundsniper.focus_delay = 5
+	presets.weapon.deathwish.is_groundsniper.aim_delay = {1, 1}
+	presets.weapon.deathwish.is_groundsniper.focus_delay = 5
+	--presets.weapon.normal.is_groundsniper.focus_delay = 10
+	--presets.weapon.normal.is_groundsniper.focus_dis = 200
+	
+	presets.weapon.normal.is_groundsniper_no_laser = deep_clone(presets.weapon.normal.is_groundsniper)
+	presets.weapon.good.is_groundsniper_no_laser = deep_clone(presets.weapon.good.is_groundsniper)
+	presets.weapon.expert.is_groundsniper_no_laser = deep_clone(presets.weapon.expert.is_groundsniper)
+	presets.weapon.deathwish.is_groundsniper_no_laser = deep_clone(presets.weapon.deathwish.is_groundsniper)
+	presets.weapon.gang_member.is_groundsniper_no_laser = deep_clone(presets.weapon.gang_member.is_groundsniper)
+	
+	presets.weapon.normal.is_groundsniper_no_laser.use_laser = false
+	presets.weapon.good.is_groundsniper_no_laser.use_laser = false
+	presets.weapon.expert.is_groundsniper_no_laser.use_laser = false
+	presets.weapon.deathwish.is_groundsniper_no_laser.use_laser = false
+	--Akiko Groundsniper Done
+	
 	restoration.log_shit("SC: normal presets")
 	presets.weapon.normal.akimbo_pistol = deep_clone(presets.weapon.normal.is_pistol)
 	presets.weapon.normal.rifle = deep_clone(presets.weapon.normal.is_rifle)
@@ -17853,7 +18176,67 @@ function CharacterTweakData:_presets(tweak_data)
 					}
 				}
 			}
-		}	
+		},
+		--About 25% Faster at Running than Very Fast (Rest of stats similar to lightning)
+		very_fast_plus = {
+			stand = {
+				walk = {
+					ntl = {
+						fwd = 150,
+						strafe = 120,
+						bwd = 110
+					},
+					hos = {
+						fwd = 350,
+						strafe = 350,
+						bwd = 350
+					},
+					cbt = {
+						fwd = 350,
+						strafe = 350,
+						bwd = 350
+					}
+				},
+				run = {
+					hos = {
+						fwd = 683,
+						strafe = 350,
+						bwd = 350
+					},
+					cbt = {
+						fwd = 683,
+						strafe = 350,
+						bwd = 350
+					}
+				}
+			},
+			crouch = {
+				walk = {
+					hos = {
+						fwd = 225,
+						strafe = 225,
+						bwd = 225
+					},
+					cbt = {
+						fwd = 225,
+						strafe = 225,
+						bwd = 225
+					}
+				},
+				run = {
+					hos = {
+						fwd = 350,
+						strafe = 225,
+						bwd = 225
+					},
+					cbt = {
+						fwd = 350,
+						strafe = 225,
+						bwd = 225
+					}
+				}
+			}
+		}
 	}
 	for speed_preset_name, poses in pairs(presets.move_speed) do
 		for pose, hastes in pairs(poses) do
@@ -18311,8 +18694,28 @@ Hooks:PostHook(CharacterTweakData, "_create_table_structure", "remod_create_tabl
 	
 	--Akimbo Peacemaker
 	table.insert(self.weap_ids, "x_peacemaker")
-	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))	
+	table.insert(self.weap_unit_names, Idstring("units/payday2/weapons/wpn_npc_peacemaker/wpn_x_npc_peacemaker"))
+	
+	--Nothing (Sniper/Rifles)
+	table.insert(self.weap_ids, "nothin_rifles")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_nothing/wpn_nothing"))
+	
+	--Port Railgun
+	table.insert(self.weap_ids, "port_railgun_npc")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_railgun/wpn_npc_railgun"))
+	
+	--Ground Sniper M14
+	table.insert(self.weap_ids, "groundsniper_m14")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_sniper_sc/wpn_npc_sniper_sc"))
+	
+	--SPAS 12
+	table.insert(self.weap_ids, "spas12")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_spas12/wpn_npc_spas12"))
 
+	--KelTec KSG
+	table.insert(self.weap_ids, "ksg")
+	table.insert(self.weap_unit_names, Idstring("units/pd2_mod_akiko/weapons/wpn_npc_ksg/wpn_npc_ksg"))
+	
 end)
 
 function CharacterTweakData:_set_easy()
@@ -19703,6 +20106,49 @@ function CharacterTweakData:character_map()
 				"ene_titan_sniper",
 				"ene_titan_sniper_scripted",
 				"ene_titan_taser"
+			}
+		}
+		char_map.akiko = {
+			path = "units/pd2_mod_akiko/characters/",
+			list = {
+				"ene_zeal_swat",
+				"ene_zeal_swat_heavy",
+				"ene_zeal_swat_shield",
+				"ene_zeal_camo",
+				"ene_zeal_camo_heavy",
+				"ene_zeal_camo_shield",
+				"ene_titan_shield_bulldozer",
+				"ene_zeal_warthog",
+				"ene_norm_warthog",
+				"ene_xof_piglet",
+				"ene_groundsniper_fbi",
+				"ene_groundsniper_swat",
+				"ene_groundsniper_gensec",
+				"ene_xof_heavy",
+				"ene_xof_heavy_sniper",
+				"ene_xof_light",
+				"ene_xof_shield",
+				"ene_xof_specialist",
+				"ene_gign_doc",
+				"ene_xof_volunteer",
+				"ene_groundsniper_ng",
+				"ene_atf_agent",
+				"ene_cia_agent",
+				"ene_cia_zeal_light",
+				"ene_irs_bulldozer_skull",
+				"ene_irs_mpu",
+				"ene_bulldozer_taser",
+				"ene_zeal_bulldozer_taser",
+				"ene_ng_minigunner",
+				"ene_ng_medic_1",
+				"ene_ng_medic_2",
+				"ene_ng_cloaker",
+				"ene_ng_heavy_sniper",
+				"ene_ng_bulldozer_medic",
+				"ene_ng_bulldozer_minigun",
+				"ene_ng_bulldozer",
+				"ene_ng_bulldozer_2",
+				"ene_ng_bulldozer_3"
 			}
 		}
 

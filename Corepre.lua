@@ -1,3 +1,11 @@
+--[[ -- Disable For Nowww
+if BeardLib.Utils:FindMod("RestorationMod") or BeardLib.Utils:FindMod("FaN Scout's Restoration Mod Addons") then
+	log("THE GAME CRASHED ON PURPOSE PLZ REMOVE: RESTORATION MOD OR ANY FORKS OF IT!!! or THERE SOMETHING INCOMPATIBLE")
+	assert((9 + 10) == 21, "Forced Crsah o7")
+	PackageManager:load("packages/forcedtocrash")
+end
+]]
+
 --Map Replacements (WIP)
 RestorationMapFramework = RestorationMapFramework or class(MapFramework)
 
@@ -8,6 +16,9 @@ RestorationMapFramework:init()
 RestorationMapFramework:InitMods()
 if not PackageManager:loaded("packages/scassets") then
 	PackageManager:load("packages/scassets")
+end
+if not PackageManager:loaded("packages/akikoforcedtoload") then
+	PackageManager:load("packages/akikoforcedtoload")
 end
 if not PackageManager:loaded("packages/outfitassets") then
 	PackageManager:load("packages/outfitassets")

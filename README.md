@@ -129,3 +129,11 @@ Bobctopus: Spanish localisation
 Additional Testers: Derma, ShortonComedyGamer, K4_Kydure, Finale
 
 AND YOU, THE RESMOD GAMERS!
+
+
+# Temp Credits -- credits i notice while porting stuff from old fork
+- Added thermalish color grading (https://modworkshop.net/mod/43313)
+ - FLIR Vision Color Grading
+	- https://modworkshop.net/mod/43313
+ - WeaponLib
+	- https://modworkshop.net/mod/24177

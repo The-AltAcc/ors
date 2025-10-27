@@ -1263,6 +1263,7 @@ function SkillTreeTweakData:init(tweak_data)
 					},
 					[2] = {
 						upgrades = {
+							"player_grant_night_vision",
 							"player_buy_bodybags_asset",
 							"player_additional_assets",
 							"player_buy_spotter_asset"
@@ -4351,7 +4352,396 @@ function SkillTreeTweakData:init(tweak_data)
 				desc_id = "menu_deck00_9_desc"
 			}
 		}	
-
+	
+	--Akiko Armor Plate Perk Deck (og. Hacker_lyx) -- Stats 2 Change :3
+	
+	--TEST
+	local armor_plate_material_multi_choice = {
+		{
+			name_id = "menu_deck_adaptive_alt1_9",
+			desc_id = "menu_deck_adaptive_alt1_9_desc",
+			short_id = "menu_deck_adaptive_alt1_9_desc",
+			icon_atlas = "icons_atlas",
+			upgrades = {
+				"player_invul_adaptive_plate_varient_1",
+				"invul_adaptive_plate_timer_1",
+				"player_perk_armor_regen_timer_multiplier_5"
+			},
+			texture_bundle_folder = "sc",
+			icon_xy = {0, 0}
+		},
+		{
+			name_id = "menu_deck_adaptive_alt2_9",
+			desc_id = "menu_deck_adaptive_alt2_9_desc",
+			short_id = "menu_deck_adaptive_alt2_9_desc",
+			icon_atlas = "icons_atlas",
+			upgrades = {
+				"player_perk_armor_regen_timer_multiplier_5",
+				"player_perk_armor_regen_timer_multiplier_6"
+			},
+			texture_bundle_folder = "sc",
+			icon_xy = {0, 0}
+		},
+		{
+			name_id = "menu_deck_adaptive_alt3_9",
+			desc_id = "menu_deck_adaptive_alt3_9_desc",
+			short_id = "menu_deck_adaptive_alt3_9_desc",
+			icon_atlas = "icons_atlas",
+			upgrades = {
+				"player_perk_armor_regen_timer_multiplier_5",
+				"player_perk_armor_regen_timer_multiplier_6",
+				"player_perk_armor_regen_timer_multiplier_7"
+			},
+			texture_bundle_folder = "sc",
+			icon_xy = {0, 0}
+		},
+		{
+			name_id = "menu_deck_adaptive_alt4_9",
+			desc_id = "menu_deck_adaptive_alt4_9_desc",
+			short_id = "menu_deck_adaptive_alt4_9_desc",
+			icon_atlas = "icons_atlas",
+			upgrades = {
+				"titan_bd_armor_multiplier_1",
+				"player_perk_armor_regen_timer_multiplier_5",
+				"player_perk_armor_regen_timer_multiplier_6",
+				"player_perk_armor_regen_timer_multiplier_7"
+			},
+			texture_bundle_folder = "sc",
+			icon_xy = {0, 0}
+		},
+	}
+	--REPLACE LATER
+	--Added New Armor Plate Types Here (For now perk deck uses a fixed 4 armor plates)
+	akikofunperkdecktablecrap = {}
+	for i=1,4,1 do
+		akikofunperkdecktablecrap["armor_plate_" .. i] = {
+			{
+				name_id = "menu_akiko_ceramic_imp_plate",
+				desc_id = "menu_akiko_ceramic_imp_plate_desc",
+				short_id = "menu_akiko_ceramic_imp_plate_desc",
+				icon_atlas = "icons_atlas",
+				upgrades = {
+					"akiko_ceramic_imp_plate_" .. i,
+				},
+				texture_bundle_folder = "sc",
+				icon_xy = {0, 0}
+			},
+		}
+	end
+	--Multichoice Basic Card Varient Modular Aegis
+	local deck2_ma = {
+		upgrades = {
+			"weapon_passive_headshot_damage_multiplier",
+			"weapon_passive_damage_multiplier_1",
+			"player_non_special_melee_multiplier_1", --This bonus doesn't actually do anything, but it is what's displayed in menus.
+			"player_melee_damage_multiplier_1"
+		},
+		cost = 300,
+		icon_xy = {1, 0},
+		multi_choice = akikofunperkdecktablecrap["armor_plate_1"],
+		name_id = "menu_deckall_2",
+		desc_id = "menu_deckall_2_desc_ma"
+	}
+	local deck4_ma = {
+		upgrades = {
+			"passive_player_xp_multiplier_1",
+			"player_passive_suspicion_bonus",
+			"player_passive_armor_movement_penalty_multiplier",
+			"weapon_passive_reload_speed_multiplier",
+			"weapon_passive_damage_multiplier_2",
+			"player_non_special_melee_multiplier_2",
+			"player_melee_damage_multiplier_2"			
+		},
+		cost = 600,
+		icon_xy = {3, 0},
+		multi_choice = akikofunperkdecktablecrap["armor_plate_2"],
+		name_id = "menu_deckall_4",
+		desc_id = "menu_deckall_4_desc_ma"
+	}
+	local deck6_ma = {
+		upgrades = {
+			"armor_kit",
+			"weapon_passive_pick_up_multiplier",
+			"weapon_passive_damage_multiplier_3",
+			"player_non_special_melee_multiplier_3",
+			"player_melee_damage_multiplier_3"			
+		},
+		cost = 1600,
+		icon_xy = {5, 0},
+		multi_choice = akikofunperkdecktablecrap["armor_plate_3"],
+		name_id = "menu_deckall_6",
+		desc_id = "menu_deckall_6_desc_ma"
+	}
+	local deck8_ma = {
+		upgrades = {
+			"weapon_passive_damage_multiplier_4",
+			"passive_doctor_bag_interaction_speed_multiplier",
+			"player_non_special_melee_multiplier_4",
+			"player_melee_damage_multiplier_4"
+		},
+		cost = 3200,
+		icon_xy = {7, 0},
+		multi_choice = akikofunperkdecktablecrap["armor_plate_4"],
+		name_id = "menu_deckall_8",
+		desc_id = "menu_deckall_8_desc_ma"
+	}
+	
+	local sc_armor_plate_deck = {
+		{
+			cost = 200,
+			desc_id = "menu_deck_adaptive_1_desc",
+			short_id = "menu_deck_adaptive_1_short",
+			name_id = "menu_deck_adaptive_1",
+			upgrades = {
+				--BLAH BLAH
+				"player_armor_plate_bag_amount_1",
+				"player_armor_plate_bag_amount_2",
+				"player_armor_plate_bag_amount_3",
+				"player_armor_plate_bag_amount_4",
+				"player_armor_plate_bag_amount_5",
+				"player_armor_plate_bag_amount_6",
+				--TEST REPLACE LATER
+				"adaptive_plate",
+				"adaptive_plate_base",
+				"temporary_adaptive_plate_stage_0",
+				"player_adaptive_plate_multiplier_1",
+				"temporary_adaptive_plate_stage_1",
+				"temporary_adaptive_plate_stage_2",
+				"temporary_adaptive_plate_stage_3",
+				"temporary_adaptive_plate_stage_4",
+				"akiko_ma_default_plate",
+			},
+			icon_xy = {
+				6,
+				0
+			}
+		},
+		deck2_ma,
+		{
+			cost = 400,
+			desc_id = "menu_deck_adaptive_3_desc",
+			short_id = "menu_deck_adaptive_3_short",
+			name_id = "menu_deck_adaptive_3",
+			upgrades = {
+				--Change This
+				"player_tier_armor_multiplier_1",
+				"player_tier_armor_multiplier_2"
+			},
+			icon_xy = {
+				5,
+				1
+			}
+		},
+		deck4_ma,
+		{
+			cost = 1000,
+			desc_id = "menu_deck_adaptive_5_desc",
+			short_id = "menu_deck_adaptive_5_short",
+			name_id = "menu_deck_adaptive_5",
+			upgrades = {
+				"player_perk_armor_regen_timer_multiplier_1",
+				"player_perk_armor_regen_timer_multiplier_2",
+			},
+			icon_xy = {
+				7,
+				1
+			}
+		},
+		deck6_ma,
+		{
+			cost = 2400,
+			desc_id = "menu_deck_adaptive_7_desc",
+			short_id = "menu_deck_adaptive_7_short",
+			name_id = "menu_deck_adaptive_7",
+			upgrades = {
+				--Change This tooo
+				"player_tier_armor_multiplier_3",
+				"player_tier_armor_multiplier_4"
+			},
+			icon_xy = {
+				6,
+				1
+			}
+		},
+		deck8_ma,
+		{
+			cost = 4000,
+			desc_id = "menu_deck_adaptive_9_desc",
+			short_id = "menu_deck_adaptive_9_short",
+			name_id = "menu_deck_adaptive_9",
+			upgrades = {
+				"player_perk_armor_regen_timer_multiplier_3",
+				"player_perk_armor_regen_timer_multiplier_4",
+				"player_passive_loot_drop_multiplier_1"
+			},
+			icon_xy = {
+				0,
+				2
+			},
+			--multi_choice = armor_plate_material_multi_choice
+		},
+		name_id = "menu_st_spec_adaptive",
+		desc_id = "menu_st_spec_adaptive_desc",
+		category = {
+			"defensive",
+			"activated"
+		}
+	}
+	
+	--Offyerrocker Liberator Perk Deck (+ SpireWitch) -- Stats 2 Change :3
+	local sc_liberator = {
+			name_id = "menu_deck_liberator_title",
+			desc_id = "menu_deck_liberator_desc",
+			category = {
+				--"mod",
+				"activated"
+			},
+			{
+				upgrades = {
+					"tachi", --unlocks throwable
+					"player_tachi_base", --base throwable stats (number of charges, cooldown speed etc)
+					"player_tachi_restore_health_1",
+					"player_tachi_restore_stamina_1",
+					"player_tachi_hot_amount_1",
+					"player_tachi_hot_duration_1"
+				},
+				cost = 200,
+				icon_xy = {0, 0},
+				texture_bundle_folder = "liberator",
+				name_id = "menu_deck_liberator_1",
+				desc_id = "menu_deck_liberator_1_desc_sc"
+			},
+			deck2,
+			{
+				upgrades = {
+					"player_tachi_hot_duration_2",
+					"player_tachi_hot_cancelled_damage_resistance_consolation"
+				},
+				cost = 400,
+				icon_xy = {1,0},
+				texture_bundle_folder = "liberator",
+				name_id = "menu_deck_liberator_3",
+				desc_id = "menu_deck_liberator_3_desc_sc"
+			},
+			deck4,
+			{
+				upgrades = {
+					"player_tachi_hot_amount_2",
+					"player_tachi_restore_stamina_2",
+					"player_passive_dodge_chance_1"
+				},
+				cost = 1000,
+				icon_xy = {2, 0},
+				texture_bundle_folder = "liberator",
+				name_id = "menu_deck_liberator_5",
+				desc_id = "menu_deck_liberator_5_desc_sc"
+			},
+			deck6,
+			{
+				upgrades = {
+					"player_passive_health_multiplier_1",
+					"player_passive_health_multiplier_2",
+					"player_tachi_hot_duration_3"
+				},
+				cost = 2400,
+				icon_xy = {3, 0},
+				texture_bundle_folder = "liberator",
+				name_id = "menu_deck_liberator_7",
+				desc_id = "menu_deck_liberator_7_desc_sc"
+			},
+			deck8,
+			{
+				upgrades = {
+					"player_tachi_hot_amount_3",
+					"player_passive_loot_drop_multiplier_1"
+				},
+				cost = 4000,
+				icon_xy = {0,1},
+				texture_bundle_folder = "liberator",
+				name_id = "menu_deck_liberator_9",
+				desc_id = "menu_deck_liberator_9_desc_sc"
+			}
+		}
+		--Offyerrocker Mercenary Perk Deck (+ Kuzidas)
+		local sc_kmerc = {
+			name_id = "menu_deck_kmerc_title",
+			desc_id = "menu_deck_kmerc_desc",
+			category = {
+				"defensive"
+			},
+			{
+				name_id = "menu_deck_kmerc_1",
+				desc_id = "menu_deck_kmerc_1_desc_sc",
+				cost = 200,
+				upgrades = {
+					"player_kmerc_reactive_absorption",
+					"player_kmerc_passive_health_multiplier_1"
+				},
+				texture_bundle_folder = "kmerc",
+				icon_xy = {
+					0,
+					0
+				}
+			},
+			deck2,
+			{
+				name_id = "menu_deck_kmerc_3",
+				desc_id = "menu_deck_kmerc_3_desc_sc",
+				cost = 400,
+				upgrades = {
+					"player_kmerc_reload_speed_bonus_per_max_armor",
+					"player_kmerc_swap_speed_bonus_per_max_armor",
+					"player_tier_armor_multiplier_1"
+				},
+				texture_bundle_folder = "kmerc",
+				icon_xy = {1,0}
+			},
+			deck4,
+			{
+				name_id = "menu_deck_kmerc_5",
+				desc_id = "menu_deck_kmerc_5_desc_sc",
+				cost = 1000,
+				upgrades = {
+					"player_kmerc_fatal_triggers_invuln",
+					"player_kmerc_passive_health_multiplier_2"
+				},
+				texture_bundle_folder = "kmerc",
+				icon_xy = {
+					2,
+					0
+				}
+			},
+			deck6,
+			{
+				name_id = "menu_deck_kmerc_7",
+				desc_id = "menu_deck_kmerc_7_desc_sc",
+				cost = 2400,
+				upgrades = {
+					"player_kmerc_armored_hot"
+				},
+				texture_bundle_folder = "kmerc",
+				icon_xy = {
+					3,
+					0
+				}
+			},
+			deck8,
+			{
+				name_id = "menu_deck_kmerc_9",
+				desc_id = "menu_deck_kmerc_9_desc_sc",
+				cost = 4000,
+				upgrades = {
+					"player_kmerc_bloody_armor",
+					"player_passive_loot_drop_multiplier_1"
+				},
+				texture_bundle_folder = "kmerc",
+				icon_xy = {
+					0,
+					1
+				}
+			}
+		}
+		
 	--Then we insert our new perk decks into the table--
 	self.specializations[1] = sc_crew_chief
 	self.specializations[2] = sc_muscle
@@ -4378,6 +4768,9 @@ function SkillTreeTweakData:init(tweak_data)
 	self.specializations[23] = sc_steamed
 	self.specializations[24] = sc_blank
 	self.specializations[25] = sc_yes_man
+	self.specializations[26] = sc_armor_plate_deck
+	self.specializations[27] = sc_liberator
+	self.specializations[28] = sc_kmerc
 	
 
 	self.specialization_category = {

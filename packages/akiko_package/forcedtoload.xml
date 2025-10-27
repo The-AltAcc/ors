@@ -1,0 +1,66 @@
+<table directory="assets">		
+	<!--AUDIO-->
+	<!--Metal Gear Solid Alert Sound - Replace Detection Sound-->
+	<stream path="soundbanks/streamed/hud/426382858" force = "true"/>
+	
+	<!--Custom Weapon Reverb (loudday2 reverb test v2)-->
+	<bnk path="soundbanks/regular_sfx" force = "true"/>
+	<bnk path="soundbanks/regular_weapon_sfx" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/500171410" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/644243278" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/881449733" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/985663422" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/1040174920" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/489524515" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/351864586" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/361129238" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/401825351" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/439776723" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/273755242" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/175560437" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/188841170" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/220937031" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/247135295" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/101500371" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/117697530" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/130441089" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/142613909" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/144467911" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/100395606" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/58912613" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/69693530" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/87787627" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/96508030" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/31626160" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/22270396" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/23854073" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/24298305" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/24623050" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/14479052" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/11072789" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/9834793" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/3771253" force = "true"/>
+	<stream path="soundbanks/streamed/regular_weapon_sfx/18216262" force = "true"/>
+	
+	<!--UNITS AND TEXTURES-->
+	<!--Astolfo :3-->
+	<texture path="units/payday2/props/off_prop_appliance_monitor/screen_il"/>
+	<texture path="units/payday2/props/off_prop_appliance_monitor/screen_df"/>
+	<texture path="units/pd2_dlc_berry/pickups/bry_pku_masterpiece/bry_pku_masterpiece_df"/>
+	
+	<!--Scopes Overlay-->
+	<texture path="guis/scope_overlay/g11_reticle_overlay"/>
+	<texture path="guis/scope_overlay/iuhPistolSniperScopeOverlay"/>
+	<texture path="guis/scope_overlay/iuhPSO1ScopeOverlay"/>
+	<texture path="guis/scope_overlay/rorsch_scopeoverlay"/>
+	
+	<!--Misc?-->
+	<texture path="core/textures/cg_FLIR"/>
+	<texture path="color_grading/infrared"/>
+	
+	<!--Perk Deck Images-->
+	<texture path="guis/dlcs/adaptive_plate/textures/pd2/blackmarket/icons/grenades/adaptive_plate"/>
+	<texture path="guis/dlcs/liberator/textures/pd2/blackmarket/icons/grenades/tachi"/>
+	<texture path="guis/dlcs/liberator/textures/pd2/specialization/icons_atlas"/>
+	<texture path="guis/dlcs/kmerc/textures/pd2/specialization/icons_atlas"/>
+</table>

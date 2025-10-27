@@ -1,0 +1,242 @@
+<table directory="assets">		
+	<!--National Guard Bulldozer Debrises-->
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_1" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3" force="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false" load="false"/>
+
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_helmet_plate/ene_acc_bulldozer_helmet_plate" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_back/ene_acc_bulldozer_back" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_back/ene_acc_bulldozer_back" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_chest/ene_acc_bulldozer_chest" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_chest/ene_acc_bulldozer_chest" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_neck/ene_acc_bulldozer_neck" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_neck/ene_acc_bulldozer_neck" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_stomache/ene_acc_bulldozer_stomache" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_throat/ene_acc_bulldozer_throat" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_back/ene_acc_bulldozer_back" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_back/ene_acc_bulldozer_back" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_back/ene_acc_bulldozer_back" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_back/ene_acc_bulldozer_back" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_chest/ene_acc_bulldozer_chest" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_chest/ene_acc_bulldozer_chest" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_chest/ene_acc_bulldozer_chest" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_chest/ene_acc_bulldozer_chest" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_neck/ene_acc_bulldozer_neck" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_neck/ene_acc_bulldozer_neck" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_neck/ene_acc_bulldozer_neck" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_neck/ene_acc_bulldozer_neck" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_stomache/ene_acc_bulldozer_stomache" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_throat/ene_acc_bulldozer_throat" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_throat/ene_acc_bulldozer_throat" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_throat/ene_acc_bulldozer_throat" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_2_throat/ene_acc_bulldozer_throat" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_back/ene_acc_bulldozer_back" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_back/ene_acc_bulldozer_back" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_back/ene_acc_bulldozer_back" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_back/ene_acc_bulldozer_back" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_chest/ene_acc_bulldozer_chest" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_chest/ene_acc_bulldozer_chest" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_chest/ene_acc_bulldozer_chest" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_chest/ene_acc_bulldozer_chest" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_neck/ene_acc_bulldozer_neck" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_neck/ene_acc_bulldozer_neck" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_neck/ene_acc_bulldozer_neck" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_neck/ene_acc_bulldozer_neck" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_stomache/ene_acc_bulldozer_stomache" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_stomache/ene_acc_bulldozer_stomache" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_throat/ene_acc_bulldozer_throat" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_throat/ene_acc_bulldozer_throat" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_throat/ene_acc_bulldozer_throat" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_bulldozer/ene_acc_bulldozer_3_throat/ene_acc_bulldozer_throat" force="false" load="false"/>
+	
+	<!--National Guard Skull Bulldozer-->
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer/ene_ng_bulldozer" force="false"/>
+	
+	<!--National Guard Green Bulldozer-->
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_2/ene_ng_bulldozer_2" force="false"/>
+	
+	<!--National Guard Black Bulldozer (Killdozer)-->
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_3/ene_ng_bulldozer_3" force="false"/>
+	
+	<!--National Guard Medic Bulldozer Debrises-->
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_back/ene_acc_bulldozer_medic_back" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_chest/ene_acc_bulldozer_medic_chest" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_helmet_plate/ene_acc_bulldozer_medic_helmet_plate" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_neck/ene_acc_bulldozer_medic_neck" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_stomache/ene_acc_bulldozer_medic_stomache" force="false" load="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/debris/ene_acc_bulldozer_medic_throat/ene_acc_bulldozer_medic_throat" force="false" load="false"/>
+	
+	<!--National Guard Medic Bulldozer-->
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_medic/ene_ng_bulldozer_medic" force="false"/>
+	
+	<!--National Guard Minigun Bulldozer Debrises-->
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/debris/ene_acc_bulldozer_minigun_helmet_plate/ene_acc_bulldozer_minigun_helmet_plate" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/debris/ene_acc_bulldozer_minigun_helmet_plate/ene_acc_bulldozer_minigun_helmet_plate" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/debris/ene_acc_bulldozer_minigun_helmet_plate/ene_acc_bulldozer_minigun_helmet_plate" force="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/debris/ene_acc_bulldozer_minigun_helmet_plate/ene_acc_bulldozer_minigun_helmet_plate" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/debris/ene_acc_bulldozer_minigun_helmet_plate/ene_acc_bulldozer_minigun_helmet_plate" force="false" load="false"/>
+	
+	<!--National Guard Minigun Bulldozer-->
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_national_guard_minigun_dozer_head" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" force="false"/>
+	<sequence_manager path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_bulldozer_minigun/ene_ng_bulldozer_minigun" force="false"/>
+	
+	<!--National Guard Heavy Sniper Helmet-->
+	<unit path="units/pd2_mod_akiko/characters/ene_acc_ng_heavy_sniper/ene_acc_ng_heavy_sniper" force="false" load="false"/>
+	<object path="units/pd2_mod_akiko/characters/ene_acc_ng_heavy_sniper/ene_acc_ng_heavy_sniper" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_acc_ng_heavy_sniper/ene_acc_ng_heavy_sniper" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_acc_ng_heavy_sniper/ene_acc_ng_heavy_sniper" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_acc_ng_heavy_sniper/ene_acc_ng_heavy_sniper" force="false"/>
+	
+	<!--National Guard Heavy Sniper-->
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper_head" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper_helmet" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_heavy_sniper/ene_ng_heavy_sniper" force="false"/>
+	
+	<!--National Guard Medic-->
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_medic_1/ene_ng_medic_1" force="false"/>
+	
+	<!--National Guard Shotgun Medic-->
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_medic_2/ene_ng_medic_2" force="false"/>
+	
+	<!--National Guard Cloaker-->
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker_head" force="false"/>
+	<df_nm path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker" force="false"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker" load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker_husk" load="true"/>
+	<object path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker" force="false"/>
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_ng_cloaker/ene_ng_cloaker" force="false"/>
+	
+</table>

@@ -97,10 +97,15 @@ function RaycastWeaponBase:can_shoot_through_enemy_unlim()
 	return self._can_shoot_through_enemy_unlim
 end
 
+function RaycastWeaponBase:can_shoot_through_wall_unlim()
+	return self._can_shoot_through_wall_unlim
+end
+
 function RaycastWeaponBase:_collect_hits(from, to)
 	local setup_data = {
 		stop_on_impact = self:bullet_class().stop_on_impact,
 		can_shoot_through_wall = self:can_shoot_through_wall(),
+		can_shoot_through_wall_unlim = self:can_shoot_through_wall_unlim(),
 		can_shoot_through_shield = self:can_shoot_through_shield(),
 		can_shoot_through_titan_shield = self:can_shoot_through_titan_shield(),
 		can_shoot_through_enemy = self:can_shoot_through_enemy(),
@@ -160,6 +165,7 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 	end
 
 	local can_shoot_through_wall = setup_data.can_shoot_through_wall
+	local can_shoot_through_wall_unlim = setup_data.can_shoot_through_wall_unlim
 	local can_shoot_through_shield = setup_data.can_shoot_through_shield
 	local can_shoot_through_titan_shield = setup_data.can_shoot_through_titan_shield
 	local can_shoot_through_enemy = setup_data.can_shoot_through_enemy
@@ -173,7 +179,7 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 	local is_semi_snp = can_shoot_through_shield and weap_base and weap_base.categories and not weap_base:is_category("amr") and weap_base:is_category("semi_snp", "dmr_l", "dmr_h", "shotgun_auto", "shotgun_light") 
 
 	--Just set this immediately.
-	local ray_hits = can_shoot_through_wall and World:raycast_wall("ray", from, to, "slot_mask", bullet_slotmask, "ignore_unit", ignore_unit, "thickness", 40, "thickness_mask", wall_mask)
+	local ray_hits = can_shoot_through_wall and not can_shoot_through_wall_unlim and World:raycast_wall("ray", from, to, "slot_mask", bullet_slotmask, "ignore_unit", ignore_unit, "thickness", 40, "thickness_mask", wall_mask)
 		or World:raycast_all("ray", from, to, "slot_mask", bullet_slotmask, "ignore_unit", ignore_unit)
 
 	local unique_hits = {}
@@ -200,7 +206,7 @@ function RaycastWeaponBase.collect_hits(from, to, setup_data, weapon_unit)
 			end
 			if (setup_data.has_hit_enemy or not can_shoot_through_enemy and is_enemy) or (armour[hit.body:name():key()] and armor_piercing_chance <= 0 ) then
 				break
-			elseif setup_data.has_hit_wall or (not can_shoot_through_wall and in_slot_func(unit, wall_mask) and (has_ray_type_func(hit.body, ai_vision_ids) or has_ray_type_func(hit.body, bulletproof_ids))) then
+			elseif (setup_data.has_hit_wall or (not can_shoot_through_wall and in_slot_func(unit, wall_mask) and (has_ray_type_func(hit.body, ai_vision_ids) or has_ray_type_func(hit.body, bulletproof_ids)))) and not can_shoot_through_wall_unlim then
 				break
 			elseif hit.unit:in_slot(shield_mask) and alive(hit.unit:parent()) then
 				local parent_base = hit.unit:parent() and hit.unit:parent().base and hit.unit:parent():base()
@@ -2112,3 +2118,20 @@ function RaycastWeaponBase:check_autoaimModded(from_pos, direction, max_dist, us
 
 	return closest_ray, suppression_enemies
 end
+
+Hooks:PostHook(RaycastWeaponBase, "reload_speed_multiplier", "kmerc_weaponbase_reloadmul_raycastweaponbase" , function(self,...)
+	if managers.player:has_category_upgrade("player","kmerc_reload_speed_per_max_armor") then
+		local player = managers.player:local_player()
+		if alive(player) then
+			local dmg_ext = player:character_damage() 
+			if dmg_ext then
+				local orig_value = Hooks:GetReturn()
+				local rate_bonus = managers.player:upgrade_value("player","kmerc_reload_speed_per_max_armor",0)
+				local rate_armor = tweak_data.upgrades.values.player.kmerc_generic_bonus_per_max_armor_rate
+				local max_armor = dmg_ext:_max_armor()
+				local bonus = math.floor(max_armor / rate_armor) * rate_bonus
+				return orig_value + bonus
+			end
+		end
+	end
+end)

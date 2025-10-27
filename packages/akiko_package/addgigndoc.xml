@@ -1,0 +1,14 @@
+<table directory="assets">		
+	<!--Gign Doc-->
+	<unit path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc"  load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc_husk"  load="true"/>
+	
+	<object path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc" force="false"/>
+	<model path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc" force="false"/>
+	
+	<material_config path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc_contour" force="false"/>
+	<material_config path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc" force="false"/>
+	
+	<cooked_physics path="units/pd2_mod_akiko/characters/ene_gign_doc/ene_gign_doc" force="false"/>
+	
+</table>

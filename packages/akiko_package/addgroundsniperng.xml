@@ -1,0 +1,6 @@
+<table directory="assets">		
+	<!--NG Groundsniper-->
+	<unit path="units/pd2_mod_akiko/characters/ene_groundsniper_ng/ene_groundsniper_ng"  load="true"/>
+	<unit path="units/pd2_mod_akiko/characters/ene_groundsniper_ng/ene_groundsniper_ng_husk"  load="true"/>
+	
+</table>

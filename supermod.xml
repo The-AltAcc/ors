@@ -8,6 +8,11 @@
 	<tweak definition="fps_animation_subset.xml" />
 	<tweak definition="std.animation_states"/>
 	<tweak definition="std.animation_subset"/>
+	<!-- Akiko Adds -->
+	<tweak definition="scope_effect_layer.xml"/>
+	<tweak definition="FLIRVisionColorGrading.xml"/>
+	<tweak definition="scope_infrared.xml"/>
+	<!-- End of Akiko Additions -->
 
 	<!-- Troublesome NPC assets go here! -->
 	<assets base_path="assets/">
